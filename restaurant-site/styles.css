@@ -1,0 +1,127 @@
+.nav-logo{
+    max-height: 75px;
+    margin: 5px;
+}
+.navbar{
+    background-color: #264c3c;
+    display: flex;
+    align-items: center;
+}
+a{
+    color: #fcf1d9;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+a:hover{
+    color: #a8541a;
+    transform: scale(110%);
+}
+.body-logo{
+    float: left;
+    max-height: 200px;
+}
+.primary-background{
+background-color: #264c3c;
+    width: 100px;
+    height: 50px;
+}
+.primary-text{
+    color: #264c3c;
+    font-family: 'Rye', serif;
+}
+.secondary-background{
+    background-color:  #a8541a;
+    width: 100px;
+    height: 50px;
+}
+.secondary-text{
+    color:  #a8541a;
+    font-family: 'Zilla Slab', serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Rye', serif;
+    color: #264c3c;
+    text-align: center;
+}
+
+body, p, li {
+    font-family: 'Zilla Slab', serif;
+    color:  #a8541a;
+}
+body, html{
+    background-color: #fcf1d9;
+    height: 100%;
+    margin: 0;
+}
+.hero-image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("./images/HeroImage.png");
+    height: 75%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+}
+.hero-text{
+    text-align: center;
+    position: relative;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hero-text h1{
+    color: #fcf1d9;
+    font-size: 50px;
+}
+.hero-text p{
+    font-size: 30px;
+}
+
+table{
+    width: 75%;
+    margin: auto;
+    border: 5px double #264c3c;
+}
+thead tr{
+    background-color: #264c3c;
+    margin-top: 20px;
+}
+caption{
+    color: #264c3c;
+    font-size: 30px;
+}
+th{
+    color: #fcf1d9;;
+}
+.container{
+    width: 50%;
+    margin: auto;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+input, textarea{
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #fcf1d9;
+    color: #264c3c;
+}
+input:focus, textarea:focus{
+    outline: none;
+    box-shadow: #264c3c 1px 1px 1px;
+    background-color: white;
+}
+button{
+    background-color: #264c3c;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+input[type="radio"] {
+    accent-color: #264c3c;
+}

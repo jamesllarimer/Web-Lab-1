@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar">
+    <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservations.html">Reservations</a>
+</nav>
+<div class="container">
+<h1>Make a reservation</h1>
+<p><i>Reservation requests are request only and do not guarantee availability.</i></p>
+<div class="form-wrapper">
+    <form action="" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" maxlength="20" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="party-size">Party Size</label>
+            <input type="number" id="party-size" name="party-size" min="1" max="8" required>
+        </div>
+        <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" required>
+        </div>
+        <div class="form-group">
+        <label for="dietary-notes">Dietary Notes</label>
+        <textarea name="dietary-notes" id="dietary-notes"  maxlength="30">Dietary Notes...</textarea>
+        </div>
+        <fieldset>
+            <legend>Seating Preference</legend>
+            <input type="radio" id="indoor" name="seating-preference" value="Indoor" >
+            <label for="indoor">Indoor</label>
+            <input type="radio" id="outdoor" name="seating-preference" value="Outdoor">
+            <label for="outdoor">Outdoor</label>
+            <input type="radio" name="seating-preference" id="bar">
+            <label for="bar">Bar</label>
+        </fieldset>
+        <fieldset>
+            <legend>Sign up for our newsletter</legend>
+            <input type="radio" name="newsletter" id="yes" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" name="newsletter" id="no" value="no">
+            <label for="no">No</label>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</div>
+</body>
+</html>
