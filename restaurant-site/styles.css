@@ -4,12 +4,130 @@
     --secondary: #a8541a; /*Brown orange for secondary text color on light or dark background */
     --secondary-light: #ae8d5f; /*Darker tan */
     --light:#fdf1da; /* off white for light backgrounds or text on dark background */
-}
 
-.container{
-    width: 75%;
-    margin: auto;
+     /*I gave claude my variables here and my two classes that control my fonts and asked it to give me all the base css variables I need to override in bootstrap.*/
+    /* Core brand colors */
+    --bs-primary: #264c3c;
+    --bs-primary-rgb: 38, 76, 60;         /* RGB version of --primary */
+    --bs-secondary: #a8541a;
+    --bs-secondary-rgb: 168, 84, 26;      /* RGB version of --secondary */
+
+    /* Light/background */
+    --bs-light: #fdf1da;
+    --bs-light-rgb: 253, 241, 218;
+
+    /* Body defaults */
+    --bs-body-color: #264c3c;             /* Default text color */
+    --bs-body-bg: #fdf1da;               /* Default page background */
+    --bs-body-font-family: 'Zilla Slab', serif;
+
+    /* Headings */
+    --bs-headings-color: #264c3c;
+
+    /* Links */
+    --bs-link-color: #a8541a;
+    --bs-link-color-rgb: 168, 84, 26;
+    --bs-link-hover-color: #264c3c;
+    --bs-link-hover-color-rgb: 38, 76, 60;
+
+    /* Borders */
+    --bs-border-color: #7a896b;
+
+    /* Cards / surfaces */
+    --bs-card-bg: #fdf1da;
+    --bs-card-border-color: #ae8d5f;
+    --bs-card-cap-bg: #264c3c;
+    --bs-card-color: #fdf1da;
+
+    /* Navbar */
+    --bs-navbar-color: #fdf1da;
+    --bs-navbar-hover-color: #ae8d5f;
+    --bs-navbar-active-color: #a8541a;
+    --bs-navbar-brand-color: #fdf1da;
+    --bs-navbar-brand-hover-color: #ae8d5f;
+
+    /* Buttons (primary) */
+    --bs-btn-color: #fdf1da;
+    --bs-btn-bg: #264c3c;
+    --bs-btn-border-color: #264c3c;
+    --bs-btn-hover-color: #fdf1da;
+    --bs-btn-hover-bg: #7a896b;
+    --bs-btn-hover-border-color: #7a896b;
+    --bs-btn-active-bg: #a8541a;
+    --bs-btn-active-border-color: #a8541a;
+
+    /* Forms */
+    --bs-form-control-bg: #fdf1da;
+    --bs-form-control-border-color: #7a896b;
+    --bs-form-control-focus-border-color: #264c3c;
+    --bs-form-check-input-checked-bg-color: #264c3c;
+    --bs-form-check-input-checked-border-color: #264c3c;
+
+    /* Dropdowns */
+    --bs-dropdown-bg: #fdf1da;
+    --bs-dropdown-border-color: #ae8d5f;
+    --bs-dropdown-link-color: #264c3c;
+    --bs-dropdown-link-hover-color: #fdf1da;
+    --bs-dropdown-link-hover-bg: #264c3c;
+    --bs-dropdown-link-active-bg: #a8541a;
+
+    /* Badges */
+    --bs-badge-color: #fdf1da;
+
+    /* Toasts / Alerts */
+    --bs-toast-bg: #fdf1da;
+    --bs-toast-border-color: #ae8d5f;
+    --bs-alert-bg: #fdf1da;
+    --bs-alert-border-color: #7a896b;
+    --bs-alert-color: #264c3c;
+
+    /* Modals */
+    --bs-modal-bg: #fdf1da;
+    --bs-modal-header-bg: #264c3c;
+    --bs-modal-header-color: #fdf1da;
+    --bs-modal-border-color: #ae8d5f;
+
+    /* Tables */
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(38, 76, 60, 0.08);
+    --bs-table-hover-bg: rgba(168, 84, 26, 0.08);
+    --bs-table-border-color: #ae8d5f;
+
+    /* Pagination */
+    --bs-pagination-color: #264c3c;
+    --bs-pagination-bg: #fdf1da;
+    --bs-pagination-border-color: #ae8d5f;
+    --bs-pagination-hover-color: #fdf1da;
+    --bs-pagination-hover-bg: #264c3c;
+    --bs-pagination-active-bg: #a8541a;
+    --bs-pagination-active-border-color: #a8541a;
+
+    /* Progress bars */
+    --bs-progress-bg: #ae8d5f;
+    --bs-progress-bar-bg: #264c3c;
+
+    /* Tooltips */
+    --bs-tooltip-bg: #264c3c;
+    --bs-tooltip-color: #fdf1da;
+
+    /* Popovers */
+    --bs-popover-bg: #fdf1da;
+    --bs-popover-border-color: #ae8d5f;
+    --bs-popover-header-bg: #264c3c;
+    --bs-popover-header-color: #fdf1da;
+    --bs-popover-body-color: #264c3c;
+
 }
+@view-transition {
+    navigation: auto;
+}
+.navbar-toggler-icon{
+    color: var(--primary-light);
+}
+/*.container{*/
+/*    width: 75%;*/
+/*    margin: auto;*/
+/*}*/
 .nav-logo{
     max-height: 75px;
     margin: 5px;
@@ -33,14 +151,18 @@ a:hover{
     float: left;
     max-height: 200px;
 }
-.primary-background{
-    background-color: var(--primary);
-    width: 100px;
-    height: 50px;
-}
+/*.primary-background{*/
+/*    background-color: var(--primary);*/
+/*    width: 100px;*/
+/*    height: 50px;*/
+/*}*/
 .primary-text{
     color: var(--primary);
     font-family: 'Rye', serif;
+}
+.secondary-text {
+    color: var(--secondary);
+    font-family: 'Zilla Slab', serif;
 }
 .secondary-background{
     background-color:  var(--secondary);
@@ -52,35 +174,28 @@ a:hover{
     font-family: 'Zilla Slab', serif;
 }
 
-h1, h2, h3 {
-    font-family: 'Rye', serif;
-    color: var(--primary);
-    text-align: center;
-}
-h1{
-    font-size: 50px;
-}
+/*h1, h2, h3 {*/
+/*    text-align: center;*/
+/*}*/
+/*h1{*/
+/*    font-size: 50px;*/
+/*}*/
 
 body, p, li {
-    font-family: 'Zilla Slab', serif;
     color:  var(--secondary);
-    text-align: center;
+    /*text-align: center;*/
 }
 body, html{
-    background-color: var(--light);
-    height: 100%;
-    margin: 0;
+    background-color: white;
+    /*height: 100%;*/
+    /*margin: 0;*/
 }
 
 /*hero */
-.hero-image{
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)) ,url("./images/HeroImage.png");
-    height: 75%;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-
+.hero-image {
+    background-image: url("./images/HeroImage.png");
 }
+/*}*/
 .hero-text{
     text-align: center;
     position: relative;
@@ -101,8 +216,8 @@ body, html{
 /*Table*/
 
 table{
-    width: 75%;
-    margin: 20px auto 20px auto;
+    /*width: 75%;*/
+    /*margin: 20px auto 20px auto;*/
     border: 5px solid var(--primary);
     border-collapse: collapse;
     box-shadow: #444444 3px 3px 3px;
@@ -119,14 +234,18 @@ caption{
 }
 th, td {
     border: 1px solid var(--primary);
-    padding: 10px;
+    /*padding: 10px;*/
     text-align: left;
+}
+td {
+    color: var(--primary);
+    font-weight: bold;
 }
 th{
     color: var(--light);
 }
 tbody tr:nth-child(even){
-    background-color: #f3e2c2;
+    background-color: var(--light);
 }
 
 /*Form*/
@@ -150,12 +269,10 @@ input:focus, textarea:focus{
     background-color: var(--light);
 }
 form { /* Card-like form container */
-
-    border: 1px solid var(--primary);/* Light border outline */
-    padding: 25px; /* Roomy inner spacing */
-    border-radius: 10px; /* Rounded corners */
-    max-width: 70%; /* Constrain width for readability */
-    margin: auto; /* Center the form horizontally */
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 70%;
+    margin: 10px auto 20px auto;
     background-color: var(--primary);
 }
 label {
@@ -205,6 +322,7 @@ fieldset{
     flex-direction: row;
     justify-content: center;
     padding: 10px;
+    margin-top: 20px;
 }
 
 legend{
