@@ -2,17 +2,20 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lefty's Appalachian Kitchen Reservations</title>
     <script src="https://kit.fontawesome.com/db4cecc8dc.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar">
-    <a href="index.html"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
-    <a href="index.html">Home <i class="fa-regular fa-house"></i></a>
-    <a href="menu.html">Menu <i class="fa-solid fa-book-open"></i></a>
-    <a href="reservations.html">Reservations <i class="fa-regular fa-calendar"></i></a>
+    <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
+    <p class="restaurant-name-nav">Lefty's Appalachian Kitchen</p>
+    <span class="nav-section">
+    <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+    <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+    <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+    </span>
 </nav>
 <div class="container">
 <h1>Make a reservation</h1>
@@ -43,7 +46,7 @@
             <label for="dietary-notes">Dietary Notes</label>
             <textarea name="dietary-notes" id="dietary-notes" placeholder="Dietary preferences..."  maxlength="30"></textarea>
         </div>
-        <fieldset>
+        <fieldset aria-required="true">
             <legend>Seating Preference</legend>
             <div class="radio-group">
                 <input type="radio" id="indoor" name="seating-preference" value="Indoor" >

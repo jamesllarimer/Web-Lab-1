@@ -10,6 +10,10 @@
     width: 75%;
     margin: auto;
 }
+.container-fluid{
+    width: 100%;
+    margin-top: 10px;
+}
 .nav-logo{
     max-height: 75px;
     margin: 5px;
@@ -18,12 +22,20 @@
     background-color: var(--primary);
     display: flex;
     align-items: center;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    overflow: hidden;
 }
-a{
-    color: #fcf1d9;
+.nav-link{
+    color: var(--light);
     padding: 10px;
     font-size: 20px;
     text-decoration: none;
+}
+.nav-section{
+    margin-left: auto;
+    margin-right: 20px;
 }
 a:hover{
     color: var(--secondary);
@@ -61,30 +73,36 @@ h1{
     font-size: 50px;
 }
 
+h2{
+    font-size: 40px;
+}
 body, p, li {
     font-family: 'Zilla Slab', serif;
     color:  var(--secondary);
     text-align: center;
 }
 body, html{
-    background-color: var(--light);
+    background-color: white;
     height: 100%;
     margin: 0;
 }
-
+.restaurant-name-nav{
+    color: var(--light);
+    font-weight: bold;
+    font-size: 26px;
+}
 /*hero */
-.hero-image{
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)) ,url("./images/HeroImage.png");
-    height: 75%;
-    background-size: cover;
-    background-position: center;
+.hero-section{
     position: relative;
-
+    text-align: center;
+    margin: 40px auto;
+}
+.hero-section img{
+    width: 100%;
+    filter: brightness(70%);
 }
 .hero-text{
-    text-align: center;
-    position: relative;
-    margin: auto;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -257,12 +275,13 @@ legend{
     margin: auto;
     background-color: var(--light);
     color: var(--primary);
+    font-size: 16px;
+}
+
+.card img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
 }
 .card:hover{
     transform: scale(1.05);
-}
-
-
-img {
-    border-radius: 5px 5px 0 0;
 }
