@@ -1,3 +1,5 @@
+/*I used AI to generate a logo based off a restaurant concept I had. I liked the colors that it had in it so I decided to use them for my colors on the site. The seem earthy and rustic which fits the mood of an appalachian mtn restaurant.
+I have a primary and secondary that are both darker colors then I use lighter shades of those colors to contrast and when I need extra contrast I use a white. */
 :root {
     --primary: #264c3c; /*Darker green for header, text on light background */
     --primary-light: #7a896b; /*light green for accent coloring*/
@@ -53,6 +55,7 @@ a:hover{
 .primary-text{
     color: var(--primary);
     font-family: 'Rye', serif;
+    /*This is one of my google fonts.*/
 }
 .secondary-background{
     background-color:  var(--secondary);
@@ -62,6 +65,7 @@ a:hover{
 .secondary-text{
     color:  var(--secondary);
     font-family: 'Zilla Slab', serif;
+    /*This is the other google fonts.*/
 }
 
 h1, h2, h3 {
