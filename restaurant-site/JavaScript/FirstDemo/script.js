@@ -1,6 +1,6 @@
 // menu section
 window.addEventListener('load', () => {
-    if(window.title === 'Reservations' ){
+    if(window.document.title === 'Menu' ){
         renderMenu();
     }
 })
