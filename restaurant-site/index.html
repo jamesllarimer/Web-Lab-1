@@ -10,32 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a href="index.html"><img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="index.html">Home <i class="fa-regular fa-house"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a href="menu.html">Menu <i class="fa-solid fa-book-open"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a href="reservations.html">Reservations <i class="fa-regular fa-calendar"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<nav class="navbar">
+    <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
+    <p class="restaurant-name-nav">Lefty's Appalachian Kitchen</p>
+    <span class="nav-section">
+    <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+    <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+    <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+    </span>
 </nav>
-<div class="container">
-<div class="jumbotron jumbotron-fluid">
-    <div class="hero-image">
-        <h1 class="display-4">Lefty's Appalachian Restaurant</h1>
+<div class="container-fluid">
+<div class="hero-section">
+        <img class="hero-image" src="./images/HeroImage.png" alt="Lefty's Cabin Image">
+    <div class="hero-text">
+        <h1>Lefty's Appalachian Kitchen</h1>
         <p>When you're here you're hillbilly</p>
+        <a href="reservations.html"><button>Make a Reservation</button></a>
     </div>
 </div>
 
@@ -44,28 +34,28 @@
     <div class="image-repeater">
 
     <div class="card">
-        <img src="./images/HeadChef.jpg" alt="Head chef" style="width:100%">
+        <img src="./images/HeadChef.jpg" alt="Head chef image">
         <div class="card-container">
             <h4><b>Billy Jean</b></h4>
             <p>Chef</p>
         </div>
     </div>
     <div class="card">
-        <img src="./images/Manager.jpg" alt="Head chef" style="width:100%">
+        <img src="./images/Manager.jpg" alt="Head of operations image">
         <div class="card-container">
             <h4><b>Billy Bob</b></h4>
             <p>Head of operations</p>
         </div>
     </div>
     <div class="card">
-                <img src="./images/Bulldog.jpg" alt="Head chef" style="width:100%">
-                <div class="card-container">
-                    <h4><b>Billy Bulldog</b></h4>
-                    <p>Head of security / Lead taste tester</p>
-                </div>
-            </div>
+        <img src="./images/Bulldog.jpg" alt="Billy Bulldog image">
+        <div class="card-container">
+            <h4><b>Billy Bulldog</b></h4>
+            <p>Head of security / Lead taste tester</p>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <script src="./JavaScript/FirstDemo/script.js"></script>
