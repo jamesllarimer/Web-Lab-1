@@ -187,7 +187,6 @@ function renderMenu (){
             <th class="col">Price</th>
         </tr>`
         caption.innerHTML = `${category.category} <i>(${category.categoryDescription})</i>`;
-        table.classList.add("table", "caption-top");
         table.appendChild(caption);
         table.appendChild(thead);
 
@@ -202,9 +201,8 @@ function renderMenu (){
         categoryItems.forEach(categoryItem => {
 
             let row = document.createElement("tr")
-            console.log(categoryItem)
             row.innerHTML = `
-            <td class="row">${categoryItem.item}</td>
+            <td>${categoryItem.item}</td>
             <td>${categoryItem.description}</td>
             <td>${new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -216,6 +214,7 @@ function renderMenu (){
         //append tbody and to table and table to the tables div
         table.appendChild(tbody);
         tableSection.appendChild(table);
+        table.classList.add("table", "table-bordered", "table-striped", "caption-top", "mt-4");
 // let tableExample =`<table>
 //     <caption>
 //         Vittles <i>(Main Dishes)</i>
