@@ -269,33 +269,51 @@ input[type="radio"] {
     position: fixed;
     width: 0;
 }
-.radio-group label{
+.form-check label{
     display: inline-block;
-    margin: 5px;
     background-color: var(--light);
     color: var(--primary);
-    padding: 10px 20px;
+    padding: 5px 10px;
     font-size: 16px;
     border: 2px solid var(--primary);
-    border-radius: 4px;
+    border-radius: 8px;
 }
-.radio-group label:hover{
+.form-check label:hover{
     background-color: var(--secondary);
     color: var(--light);
 }
-.radio-group input[type="radio"]:checked + label {
+.form-check input[type="radio"]:checked + label {
     background-color: var(--secondary);
     color: var(--light);
 }
-.radio-group input[type="radio"]:focus + label {
+.form-check input[type="radio"]:focus + label {
     border: 2px solid var(--light);
 }
 
 legend{
     color: var(--light);
+    font-size: 18px;
 }
-
+fieldset{
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    magin: 10px;
+    padding: 5px;
+}
 
 .card-group .card:hover{
     transform: scale(1.05);
+}
+
+.radio-group{
+    margin: 5px 0;
+}
+
+.btn-light{
+    color: var(--primary);
+    background-color: var(--light);
+}
+.btn-dark{
+    color: var(--secondary);
+    background-color: var(--light);
 }
