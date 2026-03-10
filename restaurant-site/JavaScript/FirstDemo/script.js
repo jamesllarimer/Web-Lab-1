@@ -358,10 +358,10 @@ function setUpResEvents(){
 }
 
 function renderReservation(formData){
-
+    let formResultDiv = document.getElementById("Form_Result");
     for (const [key, value] of Object.entries(formData)) {
         let p = document.createElement("p")
         p.innerHTML = `${key}: ${value}`;
-        document.body.appendChild(p);
+        formResultDiv.appendChild(p);
     }
 }
