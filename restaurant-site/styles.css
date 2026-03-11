@@ -74,8 +74,6 @@ a:hover{
 }
 .primary-background{
     background-color: var(--primary);
-    width: 100px;
-    height: 50px;
 }
 .primary-text{
     color: var(--primary);
@@ -99,12 +97,9 @@ h2{
 body, p, li {
     font-family: 'Zilla Slab', serif;
     color:  var(--secondary);
-    text-align: center;
 }
 body, html{
-    background-color: white;
-    height: 100%;
-    margin: 0;
+    background-color: var(--light);
 }
 .restaurant-name-nav{
     color: var(--light);
@@ -112,10 +107,10 @@ body, html{
     font-size: 26px;
 }
 /*hero */
-.hero-section{
+.hero-section {
     position: relative;
     text-align: center;
-    margin: 40px auto;
+    margin: 0; /* remove the 40px margin on mobile */
 }
 .hero-section img{
     width: 100%;
@@ -129,10 +124,10 @@ body, html{
 }
 .hero-text h1{
     color: var(--light);
-    font-size: 50px;
+    font-size: 4rem
 }
 .hero-text p{
-    font-size: 30px;
+    font-size: 3rem;
     color: var(--secondary-light);
 }
 
@@ -212,6 +207,26 @@ fieldset{
 
 .card-group .card:hover{
     transform: scale(1.05);
+}
+.card{
+    background-color: var(--light);
+    padding: 0px;
+}
+
+.card-title-custom {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.card-text-custom {
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+
+.our-team {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .radio-group{
