@@ -294,46 +294,6 @@ function renderMenu (){
         tableSection.appendChild(table);
         table.classList.add("table", "table-bordered", "table-striped", "caption-top", "mt-4");
         tableDiv.classList.add("table-responsive");
-
-// let tableExample =`<table>
-//     <caption>
-//         Vittles <i>(Main Dishes)</i>
-//     </caption>
-//     <thead>
-//     <tr>
-//         <th>Item</th>
-//         <th>Description</th>
-//         <th>Price</th>
-//     </tr>
-//     </thead>
-//     <tbody>
-//     <tr>
-//         <td>The Holler Bowl </td>
-//         <td>Soup beans slow-cooked all day with a smoked ham hock, served over crumbled cornbread in a cast iron crock.</td>
-//         <td>$14</td>
-//     </tr>
-//     <tr>
-//         <td>Squirrel Gravy & Biscuits </td>
-//         <td>Slow-braised squirrel in a rich brown gravy poured over two hand-rolled buttermilk biscuits. </td>
-//         <td>$13</td>
-//     </tr>
-//     <tr>
-//         <td>Fried Catfish Platter</td>
-//         <td>Three fillets of cornmeal-crusted catfish fried golden, served with hushpuppies and comeback sauce. </td>
-//         <td>$16</td>
-//     </tr>
-//     <tr>
-//         <td>Country Ham Steak</td>
-//         <td>A thick-cut salt-cured ham steak pan-fried in its own drippings, served with red-eye gravy and a biscuit. </td>
-//         <td>$15</td>
-//     </tr>
-//     <tr>
-//         <td>Poke Sallet Scramble</td>
-//         <td>Eggs scrambled with properly prepared poke greens, bacon, and onion. <i>Don't worry, we know how to cook it right</i>. </td>
-//         <td>$16</td>
-//     </tr>
-//     </tbody>
-// </table>`
     })
 }
 
@@ -343,12 +303,7 @@ function setUpResEvents(){
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const alertList = document.querySelectorAll('.alert');
-        //Clear out any existing alerts
-        alertList.forEach(alertElement => {
-            const alertInstance = bootstrap.Alert.getOrCreateInstance(alertElement);
-            alertInstance.close();
-        });
+       clearAlerts();
 
 
         let formData = new FormData(e.target);
@@ -366,6 +321,9 @@ function setUpResEvents(){
         }else{
             appendAlert("Submission successfully added!", "success");
             renderReservation(entries);
+            setTimeout(() => {
+                clearAlerts();
+            }, 5000);
         }
 
 
@@ -378,7 +336,7 @@ function setUpResEvents(){
 
 function renderReservation(formData){
     const formResult = document.getElementById('form_result')
-
+    formResult.innerHTML = ``
     for (const [key, value] of Object.entries(formData)) {
         let p = document.createElement("p")
         p.textContent = `${key}: ${value}`;
@@ -482,4 +440,13 @@ const appendAlert = (message, type) => {
     ].join('')
 
     alertSection.append(wrapper)
+}
+
+function clearAlerts(){
+    const alertList = document.querySelectorAll('.alert');
+    //Clear out any existing alerts
+    alertList.forEach(alertElement => {
+        const alertInstance = bootstrap.Alert.getOrCreateInstance(alertElement);
+        alertInstance.close();
+    })
 }
