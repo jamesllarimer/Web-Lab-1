@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<nav class="navbar navbar-dark sticky-top">
     <div class="container-fluid">
         <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
         <a class="navbar-brand" href="#">Lefty's Appalachian Kitchen</a>
@@ -38,27 +38,27 @@
     <form action="/reservation" method="post" id="reservationForm">
         <div class="form-group">
             <label class="form-label" for="name">Name</label>
-            <input class="form-control" type="text" id="name" name="name" maxlength="20" required>
+            <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
         </div>
         <div class="form-group">
             <label class="form-label"  for="email">Email</label>
-            <input class="form-control" type="email" id="email" name="email" placeholder="example@domain.com" required>
+            <input class="form-control" type="email" id="email" name="email" placeholder="example@domain.com">
         </div>
         <div class="form-group">
             <label class="form-label" for="party-size">Party Size</label>
-            <input class="form-control" type="number" id="party-size" name="party-size" min="1" max="8" required>
+            <input class="form-control" type="number" id="party-size" name="party-size">
         </div>
         <div class="form-group">
             <label class="form-label" for="date">Date</label>
-            <input class="form-control" type="date" id="date" name="date" required>
+            <input class="form-control" type="date" id="date" name="date">
         </div>
         <div class="form-group">
             <label class="form-label" for="time">Time</label>
-            <input class="form-control" type="time" id="time" name="time" required>
+            <input class="form-control" type="time" id="time" name="time">
         </div>
         <div class="form-group">
             <label class="form-label" for="dietary-notes">Dietary Notes</label>
-            <textarea class="form-control" name="dietary-notes" id="dietary-notes" placeholder="Dietary preferences..."  maxlength="30"></textarea>
+            <textarea class="form-control" name="dietary-notes" id="dietary-notes" placeholder="Dietary preferences..."></textarea>
         </div>
         <div class="radio-group">
         <fieldset aria-required="true">
@@ -92,7 +92,10 @@
         <button class="btn btn-lg btn-light" type="submit">Submit</button>
         <button class="btn  btn-lg btn-dark" type="reset">Reset</button>
     </form>
-    <div id="Form_Result">
+    <div id="alert-section">
+
+    </div>
+    <div id="form_result">
 
     </div>
 </div>

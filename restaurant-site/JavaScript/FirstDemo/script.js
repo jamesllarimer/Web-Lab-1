@@ -342,14 +342,33 @@ function setUpResEvents(){
     let form = document.getElementById("reservationForm");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        const alertList = document.querySelectorAll('.alert');
+        //Clear out any existing alerts
+        alertList.forEach(alertElement => {
+            const alertInstance = bootstrap.Alert.getOrCreateInstance(alertElement);
+            alertInstance.close();
+        });
+
+
         let formData = new FormData(e.target);
         let entries = {}
         for(const entry of formData.entries()){
             entries[entry[0]] = entry[1];
         }
-        let jsonFormData = JSON.stringify(entries);
-        renderReservation(entries);
-        console.log(jsonFormData);
+        let errors = validateForm(formData.entries());
+        if(errors.length > 0){
+
+            errors.forEach(error => {
+               appendAlert(error.message, "danger");
+            })
+
+        }else{
+            appendAlert("Submission successfully added!", "success");
+            renderReservation(entries);
+        }
+
+
     })
 
     form.addEventListener("reset", (e) => {
@@ -358,10 +377,109 @@ function setUpResEvents(){
 }
 
 function renderReservation(formData){
-    let formResultDiv = document.getElementById("Form_Result");
+    const formResult = document.getElementById('form_result')
+
     for (const [key, value] of Object.entries(formData)) {
         let p = document.createElement("p")
-        p.innerHTML = `${key}: ${value}`;
-        formResultDiv.appendChild(p);
+        p.textContent = `${key}: ${value}`;
+        formResult.appendChild(p);
     }
+
+    console.log(JSON.stringify(formData));
+    }
+    function validateForm(entries){
+    console.log("validate form")
+
+        let errors = [];
+    entries.forEach(entry => {
+        let key = entry[0];
+        let value = entry[1];
+        switch (key) {
+            case "name":
+                if(value.length < 1 || value.length > 20){
+                    console.log(key, value);
+                    let error = {
+                        input: entry[0],
+                        message: `${entry[0]} is required and must be less than 21 characters.`
+                    }
+                    errors.push(error)
+                }
+                break;
+                case "email":
+                    console.log(key, value);
+                    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (regex.test(value)) {
+                        console.log("Valid Email address");
+                    } else {
+                        let error = {
+                            input: key,
+                            message: `${value} is not a valid email address.`
+                        }
+                        errors.push(error)
+                    }
+                    break;
+                    case "party-size":
+                        console.log(key, value);
+                        if(value < 1 && value.length > 8){
+                            let error = {
+                                input: key,
+                                message: `${value} is required and must be less than 8.`
+                        }
+                        errors.push(error)
+                        }else{
+                            console.log("valid Party Size");
+                        }
+                        break;
+            case "date":
+                console.log(key, value);
+                let todaysDate = new Date().getTime();
+                if(todaysDate > value || !value){
+                    let error = {
+                        input: key,
+                        message: `The date provided must be a future date.`
+                    }
+                    errors.push(error)
+                }
+                break;
+                case "time":
+                    let todaysTime = new Date(value).getTime();
+                    if(!value){
+                        let error = {
+                            input: key,
+                            message: `A time is required.`
+                        }
+                        errors.push(error)
+                    }
+                    break
+            case "seating-preference":
+                if(!value){
+                    let error = {
+                        input: key,
+                        message: `Please select a seating preference.`
+                    }
+                    errors.push(error)
+                }
+                break;
+            default:
+                console.log(key, value);
+                break;
+
+        }
+    })
+
+        return errors;
+
+    }
+
+const appendAlert = (message, type) => {
+    const alertSection = document.getElementById('alert-section')
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+    ].join('')
+
+    alertSection.append(wrapper)
 }
