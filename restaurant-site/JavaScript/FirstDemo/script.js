@@ -264,7 +264,7 @@ function renderMenu (){
             <th scope="col">Description</th>
             <th scope="col">Price</th>
         </tr>`
-        caption.innerHTML = `${category.category}`;
+        caption.textContent = category.category;
         table.appendChild(caption);
         table.appendChild(thead);
 
@@ -280,7 +280,7 @@ function renderMenu (){
 
             let row = document.createElement("tr")
             row.innerHTML = `
-            <th scope="row">${categoryItem.name}</th>
+            <th class="table-header" scope="row">${categoryItem.name}</th>
             <td>${categoryItem.description}</td>
             <td>${new Intl.NumberFormat("en-US", {
                 style: "currency",
@@ -302,22 +302,33 @@ function setUpResEvents(){
     let form = document.getElementById("reservationForm");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+        clearAlerts();
 
-       clearAlerts();
+        let inputs = document.querySelectorAll("input");
+        let textArea = document.querySelector("textarea");
+        let inputList =[textArea.name]
+        inputs.forEach(input => {
+            inputList.push(input.name);
+        })
+
+        let uniqueFormFields = new Set(inputList);
+
 
 
         let formData = new FormData(e.target);
         let entries = {}
+
         for(const entry of formData.entries()){
             entries[entry[0]] = entry[1];
         }
-        let errors = validateForm(formData.entries());
+
+        let errors = validateForm(uniqueFormFields, entries);
         if(errors.length > 0){
 
             errors.forEach(error => {
                appendAlert(error.message, "danger");
             })
-
+            document.getElementById("alert-section").scrollIntoView();
         }else{
             appendAlert("Submission successfully added!", "success");
             renderReservation(entries);
@@ -342,69 +353,70 @@ function renderReservation(formData){
         p.textContent = `${key}: ${value}`;
         formResult.appendChild(p);
     }
-
+    formResult.scrollIntoView();
     console.log(JSON.stringify(formData));
     }
-    function validateForm(entries){
+    function validateForm(formFields, entries){
     console.log("validate form")
 
         let errors = [];
-    entries.forEach(entry => {
-        let key = entry[0];
-        let value = entry[1];
+        const currentDate = new Date().toJSON().slice(0, 10);
+        const currentTime = formatter.format(new Date())
+
+        formFields.forEach(field => {
+        let key = field
+        let value = entries[key];
+        let selectedDate = entries['date'];
         switch (key) {
             case "name":
                 if(value.length < 1 || value.length > 20){
-                    console.log(key, value);
                     let error = {
-                        input: entry[0],
-                        message: `${entry[0]} is required and must be less than 21 characters.`
+                        input: key,
+                        message: `${key} is required and the maximum is 20 characters.`
                     }
                     errors.push(error)
                 }
                 break;
                 case "email":
-                    console.log(key, value);
                     let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                    if (regex.test(value)) {
-                        console.log("Valid Email address");
-                    } else {
+                    if (!regex.test(value)) {
                         let error = {
                             input: key,
-                            message: `${value} is not a valid email address.`
+                            message: `the value provided is not a valid email address.`
                         }
                         errors.push(error)
                     }
                     break;
                     case "party-size":
-                        console.log(key, value);
-                        if(value < 1 && value.length > 8){
+                        if(value < 1 || value > 8){
                             let error = {
                                 input: key,
-                                message: `${value} is required and must be less than 8.`
+                                message: `${key} is required and must be between 1 and 8.`
                         }
                         errors.push(error)
-                        }else{
-                            console.log("valid Party Size");
                         }
                         break;
             case "date":
-                console.log(key, value);
-                let todaysDate = new Date().getTime();
-                if(todaysDate > value || !value){
+                if(currentDate > value || !value){
                     let error = {
                         input: key,
-                        message: `The date provided must be a future date.`
+                        message: `The date is required and must be today or a future date.`
                     }
                     errors.push(error)
                 }
                 break;
                 case "time":
-                    let todaysTime = new Date(value).getTime();
                     if(!value){
                         let error = {
                             input: key,
                             message: `A time is required.`
+                        }
+                        errors.push(error)
+                    }
+                    if(selectedDate == currentDate && value <= currentTime){
+                        let error = {
+                            input: key,
+                            message: `If reservation is for today the time must be greater than the current time.`
                         }
                         errors.push(error)
                     }
@@ -414,6 +426,16 @@ function renderReservation(formData){
                     let error = {
                         input: key,
                         message: `Please select a seating preference.`
+                    }
+                    errors.push(error)
+                }
+                break;
+            case "dietary-notes":
+                console.log(value.length)
+                if(value.length > 30){
+                    let error = {
+                        input: key,
+                        message: `Maximum input for ${key} is 30 characters. You have input ${value.length} characters.`
                     }
                     errors.push(error)
                 }
@@ -430,7 +452,7 @@ function renderReservation(formData){
     }
 
 const appendAlert = (message, type) => {
-    const alertSection = document.getElementById('alert-section')
+    const alertSection = document.getElementById("alert-section");
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
         `<div class="alert alert-${type} alert-dismissible" role="alert">`,
@@ -439,7 +461,7 @@ const appendAlert = (message, type) => {
         '</div>'
     ].join('')
 
-    alertSection.append(wrapper)
+    alertSection.appendChild(wrapper)
 }
 
 function clearAlerts(){
@@ -450,3 +472,10 @@ function clearAlerts(){
         alertInstance.close();
     })
 }
+
+const formatter = new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+});
+
