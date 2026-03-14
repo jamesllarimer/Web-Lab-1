@@ -7,40 +7,9 @@ I have a primary and secondary that are both darker colors then I use lighter sh
     --secondary-light: #ae8d5f; /*Darker tan */
     --light: #fdf1da; /* off white for light backgrounds or text on dark background */
 
-    /*I gave claude my variables here and my two classes that control my fonts and asked it to give me all the base css variables I need to override in bootstrap.*/
-
-
-    /* Links */
-    --bs-link-color: #a8541a;
-    --bs-link-color-rgb: 168, 84, 26;
-    --bs-link-hover-color: #264c3c;
-    --bs-link-hover-color-rgb: 38, 76, 60;
-
     /* Borders */
     --bs-border-color: #7a896b;
 
-    /* Cards / surfaces */
-    --bs-card-bg: #fdf1da;
-    --bs-card-border-color: #ae8d5f;
-    --bs-card-cap-bg: #264c3c;
-    --bs-card-color: #fdf1da;
-
-    /* Navbar */
-    --bs-navbar-color: #fdf1da;
-    --bs-navbar-hover-color: #ae8d5f;
-    --bs-navbar-active-color: #a8541a;
-    --bs-navbar-brand-color: #fdf1da;
-    --bs-navbar-brand-hover-color: #ae8d5f;
-
-    /* Buttons (primary) */
-    --bs-btn-color: #fdf1da;
-    --bs-btn-bg: #264c3c;
-    --bs-btn-border-color: #264c3c;
-    --bs-btn-hover-color: #fdf1da;
-    --bs-btn-hover-bg: #7a896b;
-    --bs-btn-hover-border-color: #7a896b;
-    --bs-btn-active-bg: #a8541a;
-    --bs-btn-active-border-color: #a8541a;
 }
 
 .navbar-toggler-icon {
@@ -189,7 +158,7 @@ legend {
 fieldset {
     border: 1px solid var(--light);
     border-radius: 5px;
-    magin: 10px;
+    margin: 10px;
     padding: 5px;
 }
 
@@ -230,8 +199,4 @@ fieldset {
 .btn-dark {
     color: var(--secondary);
     background-color: var(--light);
-}
-
-btn-close:hover {
-    color: var(--light);
 }

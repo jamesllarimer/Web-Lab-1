@@ -1,4 +1,9 @@
-// menu section
+const formatter = new Intl.DateTimeFormat('en-US', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+});
+
 window.addEventListener('load', () => {
     if (window.document.title === 'Menu') {
         renderMenu();
@@ -473,9 +478,4 @@ function clearAlerts() {
     })
 }
 
-const formatter = new Intl.DateTimeFormat('en-US', {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-});
 
