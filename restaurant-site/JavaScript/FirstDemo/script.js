@@ -1,11 +1,11 @@
 // menu section
 window.addEventListener('load', () => {
-    if(window.document.title === 'Menu' ){
+    if (window.document.title === 'Menu') {
         renderMenu();
     }
 })
 window.addEventListener('load', () => {
-    if(window.document.title === 'Reservations' ){
+    if (window.document.title === 'Reservations') {
         setUpResEvents();
         console.log('Reservations loaded');
     }
@@ -245,12 +245,12 @@ const MENU_ITEMS = [
     }
 ];
 
-function renderMenu (){
+function renderMenu() {
     //get main table div
     let tableSection = document.getElementById("tables");
     let categories = MENU_ITEMS.filter((obj, index, self) =>
         index === self.findIndex((t) => t.category === obj.category)
-);
+    );
     //create a table for each category
     categories.forEach(category => {
         let tableDiv = document.createElement("div");
@@ -298,7 +298,7 @@ function renderMenu (){
 }
 
 
-function setUpResEvents(){
+function setUpResEvents() {
     let form = document.getElementById("reservationForm");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -306,7 +306,7 @@ function setUpResEvents(){
 
         let inputs = document.querySelectorAll("input");
         let textArea = document.querySelector("textarea");
-        let inputList =[textArea.name]
+        let inputList = [textArea.name]
         inputs.forEach(input => {
             inputList.push(input.name);
         })
@@ -314,22 +314,21 @@ function setUpResEvents(){
         let uniqueFormFields = new Set(inputList);
 
 
-
         let formData = new FormData(e.target);
         let entries = {}
 
-        for(const entry of formData.entries()){
+        for (const entry of formData.entries()) {
             entries[entry[0]] = entry[1];
         }
 
         let errors = validateForm(uniqueFormFields, entries);
-        if(errors.length > 0){
+        if (errors.length > 0) {
 
             errors.forEach(error => {
-               appendAlert(error.message, "danger");
+                appendAlert(error.message, "danger");
             })
             document.getElementById("alert-section").scrollIntoView();
-        }else{
+        } else {
             appendAlert("Submission successfully added!", "success");
             renderReservation(entries);
             setTimeout(() => {
@@ -345,7 +344,7 @@ function setUpResEvents(){
     })
 }
 
-function renderReservation(formData){
+function renderReservation(formData) {
     const formResult = document.getElementById('form_result')
     formResult.innerHTML = ``
     for (const [key, value] of Object.entries(formData)) {
@@ -355,21 +354,22 @@ function renderReservation(formData){
     }
     formResult.scrollIntoView();
     console.log(JSON.stringify(formData));
-    }
-    function validateForm(formFields, entries){
+}
+
+function validateForm(formFields, entries) {
     console.log("validate form")
 
-        let errors = [];
-        const currentDate = new Date().toJSON().slice(0, 10);
-        const currentTime = formatter.format(new Date())
+    let errors = [];
+    const currentDate = new Date().toJSON().slice(0, 10);
+    const currentTime = formatter.format(new Date())
 
-        formFields.forEach(field => {
+    formFields.forEach(field => {
         let key = field
         let value = entries[key];
         let selectedDate = entries['date'];
         switch (key) {
             case "name":
-                if(value.length < 1 || value.length > 20){
+                if (value.length < 1 || value.length > 20) {
                     let error = {
                         input: key,
                         message: `${key} is required and the maximum is 20 characters.`
@@ -377,27 +377,27 @@ function renderReservation(formData){
                     errors.push(error)
                 }
                 break;
-                case "email":
-                    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                    if (!regex.test(value)) {
-                        let error = {
-                            input: key,
-                            message: `the value provided is not a valid email address.`
-                        }
-                        errors.push(error)
+            case "email":
+                let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!regex.test(value)) {
+                    let error = {
+                        input: key,
+                        message: `the value provided is not a valid email address.`
                     }
-                    break;
-                    case "party-size":
-                        if(value < 1 || value > 8){
-                            let error = {
-                                input: key,
-                                message: `${key} is required and must be between 1 and 8.`
-                        }
-                        errors.push(error)
-                        }
-                        break;
+                    errors.push(error)
+                }
+                break;
+            case "party-size":
+                if (value < 1 || value > 8) {
+                    let error = {
+                        input: key,
+                        message: `${key} is required and must be between 1 and 8.`
+                    }
+                    errors.push(error)
+                }
+                break;
             case "date":
-                if(currentDate > value || !value){
+                if (currentDate > value || !value) {
                     let error = {
                         input: key,
                         message: `The date is required and must be today or a future date.`
@@ -405,24 +405,24 @@ function renderReservation(formData){
                     errors.push(error)
                 }
                 break;
-                case "time":
-                    if(!value){
-                        let error = {
-                            input: key,
-                            message: `A time is required.`
-                        }
-                        errors.push(error)
+            case "time":
+                if (!value) {
+                    let error = {
+                        input: key,
+                        message: `A time is required.`
                     }
-                    if(selectedDate == currentDate && value <= currentTime){
-                        let error = {
-                            input: key,
-                            message: `If reservation is for today the time must be greater than the current time.`
-                        }
-                        errors.push(error)
+                    errors.push(error)
+                }
+                if (selectedDate == currentDate && value <= currentTime) {
+                    let error = {
+                        input: key,
+                        message: `If reservation is for today the time must be greater than the current time.`
                     }
-                    break
+                    errors.push(error)
+                }
+                break
             case "seating-preference":
-                if(!value){
+                if (!value) {
                     let error = {
                         input: key,
                         message: `Please select a seating preference.`
@@ -432,7 +432,7 @@ function renderReservation(formData){
                 break;
             case "dietary-notes":
                 console.log(value.length)
-                if(value.length > 30){
+                if (value.length > 30) {
                     let error = {
                         input: key,
                         message: `Maximum input for ${key} is 30 characters. You have input ${value.length} characters.`
@@ -447,9 +447,9 @@ function renderReservation(formData){
         }
     })
 
-        return errors;
+    return errors;
 
-    }
+}
 
 const appendAlert = (message, type) => {
     const alertSection = document.getElementById("alert-section");
@@ -464,7 +464,7 @@ const appendAlert = (message, type) => {
     alertSection.appendChild(wrapper)
 }
 
-function clearAlerts(){
+function clearAlerts() {
     const alertList = document.querySelectorAll('.alert');
     //Clear out any existing alerts
     alertList.forEach(alertElement => {

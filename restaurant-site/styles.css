@@ -5,9 +5,9 @@ I have a primary and secondary that are both darker colors then I use lighter sh
     --primary-light: #7a896b; /*light green for accent coloring*/
     --secondary: #a8541a; /*Brown orange for secondary text color on light or dark background */
     --secondary-light: #ae8d5f; /*Darker tan */
-    --light:#fdf1da; /* off white for light backgrounds or text on dark background */
+    --light: #fdf1da; /* off white for light backgrounds or text on dark background */
 
-     /*I gave claude my variables here and my two classes that control my fonts and asked it to give me all the base css variables I need to override in bootstrap.*/
+    /*I gave claude my variables here and my two classes that control my fonts and asked it to give me all the base css variables I need to override in bootstrap.*/
 
 
     /* Links */
@@ -43,98 +43,115 @@ I have a primary and secondary that are both darker colors then I use lighter sh
     --bs-btn-active-border-color: #a8541a;
 }
 
-.navbar-toggler-icon{
+.navbar-toggler-icon {
     color: var(--primary-light);
 }
 
-.nav-logo{
+.nav-logo {
     max-height: 75px;
     margin: 5px;
 }
-.navbar{
+
+.navbar {
     background-color: var(--primary);
 }
-.nav-link{
+
+.nav-link {
     color: var(--light);
     padding: 10px;
     font-size: 20px;
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     color: var(--secondary);
     transform: scale(105%);
 }
-.body-logo{
+
+.body-logo {
     float: left;
     max-height: 200px;
 }
-.primary-background{
+
+.primary-background {
     background-color: var(--primary);
 }
-.primary-text{
+
+.primary-text {
     color: var(--primary);
     font-family: 'Rye', serif;
     /*This is one of my google fonts.*/
 }
-.secondary-background{
-    background-color:  var(--secondary);
+
+.secondary-background {
+    background-color: var(--secondary);
 }
-.secondary-text{
-    color:  var(--secondary);
+
+.secondary-text {
+    color: var(--secondary);
     font-family: 'Zilla Slab', serif;
     /*This is the other google fonts.*/
 }
 
-h2{
+h2 {
     font-size: 40px;
 }
+
 body, p, li {
     font-family: 'Zilla Slab', serif;
-    color:  var(--secondary);
+    color: var(--secondary);
 }
-body, html{
+
+body, html {
     background-color: var(--light);
 }
-.restaurant-name-nav{
+
+.restaurant-name-nav {
     color: var(--light);
     font-weight: bold;
     font-size: 26px;
 }
+
 /*hero */
 .hero-section {
     position: relative;
     text-align: center;
     margin: 0; /* remove the 40px margin on mobile */
 }
-.hero-section img{
+
+.hero-section img {
     width: 100%;
     filter: brightness(70%);
 }
-.hero-text{
+
+.hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.hero-text h1{
+
+.hero-text h1 {
     color: var(--light);
     font-size: 4rem
 }
-.hero-text p{
+
+.hero-text p {
     font-size: 3rem;
     color: var(--secondary-light);
 }
 
-table{
+table {
     border: 5px solid var(--primary);
     box-shadow: #444444 3px 3px 3px;
 }
-thead tr{
+
+thead tr {
     background-color: var(--primary);
     margin-top: 20px;
 }
-caption{
+
+caption {
     color: var(--primary);
     font-size: 40px;
     text-align: left;
@@ -151,33 +168,36 @@ label {
     color: var(--light);
 }
 
-button{
+button {
     background-color: var(--light);
     color: var(--primary);
     padding: 10px 20px;
     margin-top: 10px;
     font-size: 16px;
 }
-button:hover{
+
+button:hover {
     color: var(--light);
     background-color: var(--secondary);
 }
 
-legend{
+legend {
     color: var(--light);
     font-size: 18px;
 }
-fieldset{
+
+fieldset {
     border: 1px solid var(--light);
     border-radius: 5px;
     magin: 10px;
     padding: 5px;
 }
 
-.card-group .card:hover{
+.card-group .card:hover {
     transform: scale(1.05);
 }
-.card{
+
+.card {
     background-color: var(--light);
     padding: 0px;
 }
@@ -198,19 +218,20 @@ fieldset{
     padding-bottom: 2rem;
 }
 
-.radio-group{
+.radio-group {
     margin: 5px 0;
 }
 
-.btn-light{
+.btn-light {
     color: var(--primary);
     background-color: var(--light);
 }
-.btn-dark{
+
+.btn-dark {
     color: var(--secondary);
     background-color: var(--light);
 }
 
-btn-close:hover{
+btn-close:hover {
     color: var(--light);
 }
