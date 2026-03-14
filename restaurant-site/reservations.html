@@ -2,79 +2,104 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Lefty's Appalachian Kitchen Reservations</title>
+    <title>Reservations</title>
     <script src="https://kit.fontawesome.com/db4cecc8dc.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
-    <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
-    <p class="restaurant-name-nav">Lefty's Appalachian Kitchen</p>
-    <span class="nav-section">
-    <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
-    <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
-    <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
-    </span>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo"
+                                                    class="nav-logo"></a>
+        <a class="navbar-brand" href="#">Lefty's Appalachian Kitchen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+            <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+            <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+        </div>
+    </div>
 </nav>
-<div class="container text-center">
-<h1>Make a reservation</h1>
-<p><i>* Reservation requests are request only and do not guarantee availability.</i></p>
-<div class="form-wrapper">
-    <form action="/reservation" method="post">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input class="form-control" type="text" id="name" name="name" maxlength="20" required>
+<div class="container-fluid-md container-lg text-center">
+    <h1>Make a reservation</h1>
+    <p><i>* Reservation requests are request only and do not guarantee availability.</i></p>
+    <form action="/reservation" method="post" id="reservationForm">
+        <div class="form-group my-3">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name">
         </div>
-        <div class="form-group">
-            <label  for="email">Email</label>
-            <input class="form-control" type="email" id="email" name="email" required>
+        <div class="form-group my-3">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="example@domain.com">
         </div>
-        <div class="form-group">
-            <label for="party-size">Party Size</label>
-            <input class="form-control" type="number" id="party-size" name="party-size" min="1" max="8" required>
+        <div class="form-group my-3">
+            <label class="form-label" for="party-size">Party Size</label>
+            <input class="form-control" type="number" id="party-size" name="party-size">
         </div>
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input class="form-control" type="date" id="date" name="date" required>
+        <div class="form-group my-3">
+            <label class="form-label" for="date">Date</label>
+            <input class="form-control" type="date" id="date" name="date">
         </div>
-        <div class="form-group">
-            <label for="time">Time</label>
-            <input class="form-control" type="time" id="time" name="time" required>
+        <div class="form-group my-3">
+            <label class="form-label" for="time">Time</label>
+            <input class="form-control" type="time" id="time" name="time">
         </div>
-        <div class="form-group">
-            <label for="dietary-notes">Dietary Notes</label>
-            <textarea class="form-control" name="dietary-notes" id="dietary-notes" placeholder="Dietary preferences..."  maxlength="30"></textarea>
+        <div class="form-group my-3">
+            <label class="form-label" for="dietary-notes">Dietary Notes</label>
+            <textarea class="form-control" name="dietary-notes" id="dietary-notes"
+                      placeholder="Dietary preferences..."></textarea>
         </div>
-        <fieldset aria-required="true">
-            <legend>Seating Preference</legend>
+        <div class="radio-group my-3">
+            <fieldset aria-required="true">
+                <legend>Seating Preference</legend>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="indoor" name="seating-preference" value="Indoor">
+                    <label class="form-check-label" for="indoor">Indoor</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="outdoor" name="seating-preference" value="Outdoor">
+                    <label class="form-check-label" for="outdoor">Outdoor</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="seating-preference" id="bar" value="Bar">
+                    <label class="form-check-label" for="bar">Bar</label>
+                </div>
 
-                <input class="form-check-input"  type="radio" id="indoor" name="seating-preference" value="Indoor" >
-                <label class="form-check-input"  for="indoor">Indoor</label>
-
-
-                <input class="form-check-input"  type="radio" id="outdoor" name="seating-preference" value="Outdoor">
-                <label class="form-check-input"  for="outdoor">Outdoor</label>
-
-
-                <input class="form-check-input"  type="radio" name="seating-preference" id="bar">
-                <label class="form-check-input"  for="bar">Bar</label>
-
-        </fieldset>
-        <fieldset>
-            <legend>Sign up for our newsletter</legend>
-
-                <input class="form-check-input"  type="radio" name="newsletter" id="yes" value="yes">
-                <label class="form-check-input"  for="yes">Yes</label>
-                <input class="form-check-input"  type="radio" name="newsletter" id="no" value="no" checked>
-                <label class="form-check-input"  for="no">No</label>
-        </fieldset>
-        <button class="btn btn-primary" type="submit">Submit</button>
-        <button class="btn" type="reset">Reset</button>
+            </fieldset>
+        </div>
+        <div class="radio-group my-3">
+            <fieldset>
+                <legend>Sign up for our newsletter</legend>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newsletter" id="yes" value="yes">
+                    <label class="form-check-label" for="yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="newsletter" id="no" value="no" checked>
+                    <label class="form-check-label" for="no">No</label>
+                </div>
+            </fieldset>
+        </div>
+        <button class="btn btn-lg btn-light" type="submit">Submit</button>
+        <button class="btn  btn-lg btn-dark" type="reset">Reset</button>
     </form>
+    <div id="alert-section" class="my-3">
+
+    </div>
+    <div id="form_result" class="my-3">
+
+    </div>
 </div>
-</div>
+<script src="./JavaScript/FirstDemo/script.js"></script>
 </body>
 </html>

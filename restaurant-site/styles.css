@@ -5,400 +5,198 @@ I have a primary and secondary that are both darker colors then I use lighter sh
     --primary-light: #7a896b; /*light green for accent coloring*/
     --secondary: #a8541a; /*Brown orange for secondary text color on light or dark background */
     --secondary-light: #ae8d5f; /*Darker tan */
-    --light:#fdf1da; /* off white for light backgrounds or text on dark background */
-
-     /*I gave claude my variables here and my two classes that control my fonts and asked it to give me all the base css variables I need to override in bootstrap.*/
-    /* Core brand colors */
-    --bs-primary: #264c3c;
-    --bs-primary-rgb: 38, 76, 60;         /* RGB version of --primary */
-    --bs-secondary: #a8541a;
-    --bs-secondary-rgb: 168, 84, 26;      /* RGB version of --secondary */
-
-    /* Light/background */
-    --bs-light: #fdf1da;
-    --bs-light-rgb: 253, 241, 218;
-
-    /* Body defaults */
-    --bs-body-color: #264c3c;             /* Default text color */
-    --bs-body-bg: #fdf1da;               /* Default page background */
-    --bs-body-font-family: 'Zilla Slab', serif;
-
-    /* Headings */
-    --bs-headings-color: #264c3c;
-
-    /* Links */
-    --bs-link-color: #a8541a;
-    --bs-link-color-rgb: 168, 84, 26;
-    --bs-link-hover-color: #264c3c;
-    --bs-link-hover-color-rgb: 38, 76, 60;
+    --light: #fdf1da; /* off white for light backgrounds or text on dark background */
 
     /* Borders */
     --bs-border-color: #7a896b;
 
-    /* Cards / surfaces */
-    --bs-card-bg: #fdf1da;
-    --bs-card-border-color: #ae8d5f;
-    --bs-card-cap-bg: #264c3c;
-    --bs-card-color: #fdf1da;
-
-    /* Navbar */
-    --bs-navbar-color: #fdf1da;
-    --bs-navbar-hover-color: #ae8d5f;
-    --bs-navbar-active-color: #a8541a;
-    --bs-navbar-brand-color: #fdf1da;
-    --bs-navbar-brand-hover-color: #ae8d5f;
-
-    /* Buttons (primary) */
-    --bs-btn-color: #fdf1da;
-    --bs-btn-bg: #264c3c;
-    --bs-btn-border-color: #264c3c;
-    --bs-btn-hover-color: #fdf1da;
-    --bs-btn-hover-bg: #7a896b;
-    --bs-btn-hover-border-color: #7a896b;
-    --bs-btn-active-bg: #a8541a;
-    --bs-btn-active-border-color: #a8541a;
-
-    /* Forms */
-    --bs-form-control-bg: #fdf1da;
-    --bs-form-control-border-color: #7a896b;
-    --bs-form-control-focus-border-color: #264c3c;
-    --bs-form-check-input-checked-bg-color: #264c3c;
-    --bs-form-check-input-checked-border-color: #264c3c;
-
-    /* Dropdowns */
-    --bs-dropdown-bg: #fdf1da;
-    --bs-dropdown-border-color: #ae8d5f;
-    --bs-dropdown-link-color: #264c3c;
-    --bs-dropdown-link-hover-color: #fdf1da;
-    --bs-dropdown-link-hover-bg: #264c3c;
-    --bs-dropdown-link-active-bg: #a8541a;
-
-    /* Badges */
-    --bs-badge-color: #fdf1da;
-
-    /* Toasts / Alerts */
-    --bs-toast-bg: #fdf1da;
-    --bs-toast-border-color: #ae8d5f;
-    --bs-alert-bg: #fdf1da;
-    --bs-alert-border-color: #7a896b;
-    --bs-alert-color: #264c3c;
-
-    /* Modals */
-    --bs-modal-bg: #fdf1da;
-    --bs-modal-header-bg: #264c3c;
-    --bs-modal-header-color: #fdf1da;
-    --bs-modal-border-color: #ae8d5f;
-
-    /* Tables */
-    --bs-table-bg: transparent;
-    --bs-table-striped-bg: rgba(38, 76, 60, 0.08);
-    --bs-table-hover-bg: rgba(168, 84, 26, 0.08);
-    --bs-table-border-color: #ae8d5f;
-
-    /* Pagination */
-    --bs-pagination-color: #264c3c;
-    --bs-pagination-bg: #fdf1da;
-    --bs-pagination-border-color: #ae8d5f;
-    --bs-pagination-hover-color: #fdf1da;
-    --bs-pagination-hover-bg: #264c3c;
-    --bs-pagination-active-bg: #a8541a;
-    --bs-pagination-active-border-color: #a8541a;
-
-    /* Progress bars */
-    --bs-progress-bg: #ae8d5f;
-    --bs-progress-bar-bg: #264c3c;
-
-    /* Tooltips */
-    --bs-tooltip-bg: #264c3c;
-    --bs-tooltip-color: #fdf1da;
-
-    /* Popovers */
-    --bs-popover-bg: #fdf1da;
-    --bs-popover-border-color: #ae8d5f;
-    --bs-popover-header-bg: #264c3c;
-    --bs-popover-header-color: #fdf1da;
-    --bs-popover-body-color: #264c3c;
-
 }
 
-.navbar-toggler-icon{
+.navbar-toggler-icon {
     color: var(--primary-light);
 }
-.container-fluid{
-    width: 100%;
-    margin-top: 10px;
-}
-.nav-logo{
+
+.nav-logo {
     max-height: 75px;
     margin: 5px;
 }
-.navbar{
+
+.navbar {
     background-color: var(--primary);
-    display: flex;
-    align-items: center;
-    position: sticky;
-    z-index: 1000;
-    top: 0;
-    overflow: hidden;
 }
-.nav-link{
+
+.nav-link {
     color: var(--light);
     padding: 10px;
     font-size: 20px;
     text-decoration: none;
 }
-.nav-section{
-    margin-left: auto;
-    margin-right: 20px;
-}
-a:hover{
+
+a:hover {
     color: var(--secondary);
-    transform: scale(110%);
+    transform: scale(105%);
 }
-.body-logo{
+
+.body-logo {
     float: left;
     max-height: 200px;
 }
-.primary-background{
+
+.primary-background {
     background-color: var(--primary);
-    width: 100px;
-    height: 50px;
 }
-.primary-text{
+
+.primary-text {
     color: var(--primary);
     font-family: 'Rye', serif;
     /*This is one of my google fonts.*/
 }
-.secondary-background{
-    background-color:  var(--secondary);
-    width: 100px;
-    height: 50px;
+
+.secondary-background {
+    background-color: var(--secondary);
 }
-.secondary-text{
-    color:  var(--secondary);
+
+.secondary-text {
+    color: var(--secondary);
     font-family: 'Zilla Slab', serif;
     /*This is the other google fonts.*/
 }
 
-/*!*h1, h2, h3 {*!*/
-/*!*    text-align: center;*!*/
-/*!*}*!*/
-/*!*h1{*!*/
-/*!*    font-size: 50px;*!*/
-/*!*}*!*/
-
-h2{
+h2 {
     font-size: 40px;
 }
+
 body, p, li {
     font-family: 'Zilla Slab', serif;
-    color:  var(--secondary);
-    text-align: center;
+    color: var(--secondary);
 }
-body, html{
-    background-color: white;
-    height: 100%;
-    margin: 0;
+
+body, html {
+    background-color: var(--light);
 }
-.restaurant-name-nav{
+
+.restaurant-name-nav {
     color: var(--light);
     font-weight: bold;
     font-size: 26px;
 }
+
 /*hero */
-.hero-section{
+.hero-section {
     position: relative;
     text-align: center;
-    margin: 40px auto;
+    margin: 0; /* remove the 40px margin on mobile */
 }
-.hero-section img{
+
+.hero-section img {
     width: 100%;
     filter: brightness(70%);
 }
-.hero-text{
+
+.hero-text {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.hero-text h1{
+
+.hero-text h1 {
     color: var(--light);
-    font-size: 50px;
+    font-size: 4rem
 }
-.hero-text p{
-    font-size: 30px;
+
+.hero-text p {
+    font-size: 3rem;
     color: var(--secondary-light);
 }
 
-/*!*table{*!*/
-/*!*    !*width: 75%;*!*!*/
-/*!*    !*margin: 20px auto 20px auto;*!*!*/
-/*!*    border: 5px solid var(--primary);*!*/
-/*!*    border-collapse: collapse;*!*/
-/*!*    box-shadow: #444444 3px 3px 3px;*!*/
-/*!*}*!*/
-/*!*thead tr{*!*/
-/*!*    background-color: var(--primary);*!*/
-/*!*    margin-top: 20px;*!*/
-/*!*}*!*/
-/*!*caption{*!*/
-/*!*    color: var(--primary);*!*/
-/*!*    font-size: 40px;*!*/
-/*!*    text-align: left;*!*/
-/*!*    padding-bottom: 10px;*!*/
-/*!*}*!*/
-/*!*th, td {*!*/
-/*!*    border: 1px solid var(--primary);*!*/
-/*!*    !*padding: 10px;*!*!*/
-/*!*    text-align: left;*!*/
-/*!*}*!*/
-/*!*td {*!*/
-/*!*    color: var(--primary);*!*/
-/*!*    font-weight: bold;*!*/
-/*!*}*!*/
-/*!*th{*!*/
-/*!*    color: var(--light);*!*/
-/*!*}*!*/
-/*!*tbody tr:nth-child(even){*!*/
-/*!*    background-color: var(--light);*!*/
-/*!*}*!*/
+table {
+    border: 5px solid var(--primary);
+    box-shadow: #444444 3px 3px 3px;
+}
 
-/*!*Form*!*/
+thead tr {
+    background-color: var(--primary);
+    margin-top: 20px;
+}
 
-/*!*.form-group{*!*/
-/*!*    display: flex;*!*/
-/*!*    flex-direction: column;*!*/
-/*!*    margin-top: 20px;*!*/
-/*!*}*!*/
+caption {
+    color: var(--primary);
+    font-size: 40px;
+    text-align: left;
+    padding-bottom: 10px;
+}
 
-/*!*input, textarea{*!*/
-/*!*    padding: 10px;*!*/
-/*!*    margin-top: 10px;*!*/
-/*!*    color: var(--primary);*!*/
-/*!*    border: 1px solid #aaa; !* Neutral border color *!*!*/
-/*!*    border-radius: 4px; !* Slight rounding for polish *!*!*/
-/*!*}*!*/
-/*!*input:focus, textarea:focus{*!*/
-/*!*    outline: none;*!*/
-/*!*    box-shadow: var(--primary) 1px 1px 1px;*!*/
-/*!*    background-color: var(--light);*!*/
-/*!*}*!*/
-/*!*form { !* Card-like form container *!*!*/
-/*!*    padding: 25px;*!*/
-/*!*    border-radius: 10px;*!*/
-/*!*    max-width: 70%;*!*/
-/*!*    margin: 10px auto 20px auto;*!*/
-/*!*    background-color: var(--primary);*!*/
-/*!*}*!*/
-/*!*label {*!*/
-/*!*    color: var(--light);*!*/
-/*!*}*!*/
+form {
+    padding: 0.5rem;
+    border-radius: 10px;
+    background-color: var(--primary);
+}
 
-/*!*button{*!*/
-/*!*    background-color: var(--light);*!*/
-/*!*    color: var(--primary);*!*/
-/*!*    padding: 10px 20px;*!*/
-/*!*    margin-top: 10px;*!*/
-/*!*    font-size: 16px;*!*/
-/*!*}*!*/
-/*!*button:hover{*!*/
-/*!*    color: var(--light);*!*/
-/*!*    background-color: var(--secondary);*!*/
-/*!*}*!*/
-/*!*input[type="radio"] {*!*/
-/*!*    opacity: 0;*!*/
-/*!*    position: fixed;*!*/
-/*!*    width: 0;*!*/
-/*!*}*!*/
-/*!*.radio-group label{*!*/
-/*!*    display: inline-block;*!*/
-/*!*    margin: 5px;*!*/
-/*!*    background-color: var(--light);*!*/
-/*!*    color: var(--primary);*!*/
-/*!*    padding: 10px 20px;*!*/
-/*!*    font-size: 16px;*!*/
-/*!*    border: 2px solid var(--primary);*!*/
-/*!*    border-radius: 4px;*!*/
-/*!*}*!*/
-/*!*.radio-group label:hover{*!*/
-/*!*    background-color: var(--secondary);*!*/
-/*!*    color: var(--light);*!*/
-/*!*}*!*/
-/*!*.radio-group input[type="radio"]:checked + label {*!*/
-/*!*    background-color: var(--secondary);*!*/
-/*!*    color: var(--light);*!*/
-/*!*}*!*/
-/*!*.radio-group input[type="radio"]:focus + label {*!*/
-/*!*    border: 2px solid var(--light);*!*/
-/*!*}*!*/
+label {
+    color: var(--light);
+}
 
-/*!*fieldset{*!*/
-/*!*    display: flex;*!*/
-/*!*    flex-direction: row;*!*/
-/*!*    justify-content: center;*!*/
-/*!*    padding: 10px;*!*/
-/*!*    margin-top: 20px;*!*/
-/*!*}*!*/
-
-/*!*legend{*!*/
-/*!*    color: var(--light);*!*/
-/*!*}*!*/
-
-/*!*Sections*!*/
-/*.content-split{*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    background-color: var(--primary);*/
-/*    box-shadow: var(--primary-light) 3px 3px 3px;*/
-/*    border-radius: 20px;*/
-/*    padding: 30px;*/
-/*    margin-bottom: 30px;*/
-
-/*}*/
-/*.content-split p{*/
-/*    text-align: left;*/
-/*    padding: 10px;*/
-/*    color: var(--light);*/
-/*    font-size: 26px;*/
-/*}*/
-
-/*.menu-image{*/
-/*    width: 50%;*/
-/*    height: 100%;*/
-/*    box-shadow: var(--primary) 2px 2px 2px;*/
-/*    border-radius: 15px;*/
-/*    margin: 10px;*/
-/*}*/
-/*.our-team{*/
-/*    padding: 20px;*/
-/*}*/
-/*.image-repeater{*/
-/*    margin: 10px;*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    justify-content: center;*/
-/*}*/
-
-/*!*card styles*!*/
-
-/*card styles*/
-
-.card {
-    box-shadow: 0 4px 8px 0 var(--secondary);
-    transition: 0.3s;
-    border: solid 1px var(--secondary-light);
-    border-radius: 10px; /* 5px rounded corners */
-    max-width: 30%;
-    margin: auto;
+button {
     background-color: var(--light);
     color: var(--primary);
+    padding: 10px 20px;
+    margin-top: 10px;
     font-size: 16px;
 }
 
-.card img{
-    width: 100%;
-    border-radius: 10px 10px 0 0;
+button:hover {
+    color: var(--light);
+    background-color: var(--secondary);
 }
-.card:hover{
+
+legend {
+    color: var(--light);
+    font-size: 18px;
+}
+
+fieldset {
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.card-group .card:hover {
     transform: scale(1.05);
+}
+
+.card {
+    background-color: var(--light);
+    padding: 0px;
+}
+
+.card-title-custom {
+    font-size: 3rem;
+    color: var(--primary);
+}
+
+.card-text-custom {
+    font-size: 2rem;
+    color: var(--secondary);
+}
+
+
+.our-team {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.radio-group {
+    margin: 5px 0;
+}
+
+.btn-light {
+    color: var(--primary);
+    background-color: var(--light);
+}
+
+.btn-dark {
+    color: var(--secondary);
+    background-color: var(--light);
 }

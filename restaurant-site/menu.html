@@ -2,204 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lefty's Appalachian Kitchen Menu</title>
+    <title>Menu</title>
     <script src="https://kit.fontawesome.com/db4cecc8dc.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https:fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
-    <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
-    <p class="restaurant-name-nav">Lefty's Appalachian Kitchen</p>
-    <span class="nav-section">
-    <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
-    <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
-    <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
-    </span>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo"
+                                                    class="nav-logo"></a>
+        <a class="navbar-brand" href="#">Lefty's Appalachian Kitchen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+            <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+            <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+        </div>
+    </div>
 </nav>
-<div class="container">
-    <h1>Menu</h1>
-    <div class="content-split">
-        <p>Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked in cast iron (no sugar), and every recipe carries a bit of mountain history.
-
-            Our menu is rooted in old-time traditions: slow-cooked vittles, hearty fixins, creekside soups, and wild-foraged flavors prepared the right way. We honor the resourcefulness of mountain cooking — simple ingredients, patient methods, and bold, honest flavor.
-
-            From soup beans and biscuits to moonshine in a jar, everything we serve is made with grit, heritage, and heart. Pull up a chair — supper’s ready.</p>
-        <img class="menu-image" src="./images/MenuPageImage.jpg" alt="Food on a table">
+<div class="container-fluid container-lg mt-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-10 col-sm-12 col-lg-7">
+            <img  class="d-block mx-lg-auto img-fluid" src="./images/MenuPageImage.jpg" alt="Food on a table" loading="lazy">
+        </div>
+        <div class="col-lg-5">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Our Menu</h1>
+            <p class="lead">Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked in cast iron
+                (no sugar), and every recipe carries a bit of mountain history.
+                Our menu is rooted in old-time traditions: slow-cooked vittles, hearty fixins, creekside soups, and
+                wild-foraged flavors prepared the right way. We honor the resourcefulness of mountain cooking —
+                simple ingredients, patient methods, and bold, honest flavor. From soup beans and biscuits to moonshine
+                in a jar, everything we serve is made with grit, heritage, and heart.
+                Pull up a chair — supper’s ready.</p>
+        </div>
     </div>
-    <div id="tables">
+    <div class="row" id="tables">
 
     </div>
-<!--</div>-->
-<!--<table>-->
-<!--    <caption>-->
-<!--        Vittles <i>(Main Dishes)</i>-->
-<!--    </caption>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Item</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Price</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td>The Holler Bowl </td>-->
-<!--        <td>Soup beans slow-cooked all day with a smoked ham hock, served over crumbled cornbread in a cast iron crock.</td>-->
-<!--        <td>$14</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Squirrel Gravy & Biscuits </td>-->
-<!--        <td>Slow-braised squirrel in a rich brown gravy poured over two hand-rolled buttermilk biscuits. </td>-->
-<!--        <td>$13</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Fried Catfish Platter</td>-->
-<!--        <td>Three fillets of cornmeal-crusted catfish fried golden, served with hushpuppies and comeback sauce. </td>-->
-<!--        <td>$16</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Country Ham Steak</td>-->
-<!--        <td>A thick-cut salt-cured ham steak pan-fried in its own drippings, served with red-eye gravy and a biscuit. </td>-->
-<!--        <td>$15</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Poke Sallet Scramble</td>-->
-<!--        <td>Eggs scrambled with properly prepared poke greens, bacon, and onion. <i>Don't worry, we know how to cook it right</i>. </td>-->
-<!--        <td>$16</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--<table>-->
-<!--    <caption>-->
-<!--        Fixins <i>(Sides)</i>-->
-<!--    </caption>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Item</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Price</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td>Kilt Lettuce</td>-->
-<!--        <td>Fresh garden lettuce wilted with hot bacon grease and a splash of apple cider vinegar.</td>-->
-<!--        <td>$4</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Fried Taters & Onions</td>-->
-<!--        <td>Cast iron skillet potatoes fried crispy with sweet onion and black pepper.</td>-->
-<!--        <td>$4</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Leather Britches</td>-->
-<!--        <td>Dried and slow-simmered green beans cooked with fatback. Worth the wait.</td>-->
-<!--        <td>$6</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Skillet Cornbread </td>-->
-<!--        <td>A wedge of cast iron cornbread. No sugar. Don't ask. </td>-->
-<!--        <td>$5</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Ramp Butter Biscuits</td>-->
-<!--        <td>Flaky buttermilk biscuits brushed with wild ramp compound butter.</td>-->
-<!--        <td>$5</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Cracklins</td>-->
-<!--        <td>Thick-cut fried pork skin with fat still on. Not for the faint of heart.</td>-->
-<!--        <td>$5</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--<table>-->
-<!--    <caption>-->
-<!--        From the crick <i>(Soups)</i>-->
-<!--    </caption>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Item</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Price</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td>Shucky Bean Soup</td>-->
-<!--        <td>A smoky, slow-simmered pot of leather britches beans with ham and potatoes.</td>-->
-<!--        <td>$8</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Granny's Vegetable Soup</td>-->
-<!--        <td>SA whatever's-in-the-garden vegetable soup with a cornbread dumpling on top.</td>-->
-<!--        <td>$7</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Catfish Muddle</td>-->
-<!--        <td>A thick, peppery catfish stew with potatoes and onions, a Low Country tradition that crept up the mountains.</td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-
-<!--<table>-->
-<!--    <caption>-->
-<!--        From the jar <i>(Moonshine & Drinks)</i>-->
-<!--    </caption>-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>Item</th>-->
-<!--        <th>Description</th>-->
-<!--        <th>Price</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    <tr>-->
-<!--        <td>Classic White Lightning </td>-->
-<!--        <td>Straight corn mash moonshine. Unaged, uncut, unapologetic.</td>-->
-<!--        <td>$8</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Apple Pie Shine</td>-->
-<!--        <td>Moonshine blended with fresh apple cider, cinnamon, and brown sugar. Goes down dangerously easy.</td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Blackberry Holler</td>-->
-<!--        <td>Wild blackberry moonshine with a hint of vanilla. Sweet but it'll sneak up on you.</td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Peach Orchard</td>-->
-<!--        <td>Sun-ripened peach moonshine, smooth and summery.</td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Switchel</td>-->
-<!--        <td>Apple cider vinegar, ginger, molasses, and cold branch water. The original mountain sports drink. </td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Sassafras Tea</td>-->
-<!--        <td>Brewed from real sassafras root. The flavor that inspired root beer. Sweet or unsweet.</td>-->
-<!--        <td>$9</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Latte</td>-->
-<!--        <td>Busch Light</td>-->
-<!--        <td>$2</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>Champagne</td>-->
-<!--        <td>Miller High Life</td>-->
-<!--        <td>$2</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
 </div>
 <script src="./JavaScript/FirstDemo/script.js"></script>
 </body>

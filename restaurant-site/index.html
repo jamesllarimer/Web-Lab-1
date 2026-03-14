@@ -4,58 +4,74 @@
     <meta charset="UTF-8">
     <title>Lefty's Appalachian Kitchen</title>
     <script src="https://kit.fontawesome.com/db4cecc8dc.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
-    <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo" class="nav-logo"></a>
-    <p class="restaurant-name-nav">Lefty's Appalachian Kitchen</p>
-    <span class="nav-section">
-    <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
-    <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
-    <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
-    </span>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo"
+                                                    class="nav-logo"></a>
+        <a class="navbar-brand" href="#">Lefty's Appalachian Kitchen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+            <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+            <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+        </div>
+    </div>
 </nav>
 <div class="container-fluid">
-<div class="hero-section">
-        <img class="hero-image" src="./images/HeroImage.png" alt="Lefty's Cabin Image">
-    <div class="hero-text">
-        <h1>Lefty's Appalachian Kitchen</h1>
-        <p>When you're here you're hillbilly</p>
-        <a href="reservations.html"><button>Make a Reservation</button></a>
-    </div>
-</div>
-
-<div class="our-team container">
-    <h2>Meet our team</h2>
-    <div class="image-repeater">
-
-    <div class="card">
-        <img src="./images/HeadChef.jpg" alt="Head chef image">
-        <div class="card-container">
-            <h4><b>Billy Jean</b></h4>
-            <p>Chef</p>
+    <div class="hero-section">
+        <img class="hero-image img-fluid" src="./images/HeroImage.png" alt="Lefty's Cabin Image">
+        <div class="hero-text">
+            <h1>Lefty's Appalachian Kitchen</h1>
+            <p>When you're here you're hillbilly</p>
+            <a href="reservations.html">
+                <button>Make a Reservation</button>
+            </a>
         </div>
     </div>
-    <div class="card">
-        <img src="./images/Manager.jpg" alt="Head of operations image">
-        <div class="card-container">
-            <h4><b>Billy Bob</b></h4>
-            <p>Head of operations</p>
+    <div class="container our-team">
+        <div class="row g-3">
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <img src="./images/HeadChef.jpg" class="card-img-top" alt="Head Chef">
+                    <div class="card-body">
+                        <h5 class="card-title card-title-custom">Billy Jean</h5>
+                        <p class="card-text card-text-custom">Chef</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <img src="./images/Manager.jpg" class="card-img-top" alt="Head of Operations">
+                    <div class="card-body">
+                        <h5 class="card-title card-title-custom">Billy Bob</h5>
+                        <p class="card-text card-text-custom">Head of Operations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card h-100">
+                    <img src="./images/Bulldog.jpg" class="card-img-top" alt="Billy Bulldog">
+                    <div class="card-body">
+                        <h5 class="card-title card-title-custom">Billy Bulldog</h5>
+                        <p class="card-text card-text-custom">Head of security / Lead taste tester</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <img src="./images/Bulldog.jpg" alt="Billy Bulldog image">
-        <div class="card-container">
-            <h4><b>Billy Bulldog</b></h4>
-            <p>Head of security / Lead taste tester</p>
-        </div>
-    </div>
-</div>
-</div>
 </div>
 
 <script src="./JavaScript/FirstDemo/script.js"></script>
