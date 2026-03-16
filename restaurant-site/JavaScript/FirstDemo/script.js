@@ -3,10 +3,21 @@ const formatter = new Intl.DateTimeFormat('en-US', {
     minute: '2-digit',
     hour12: false
 });
+let cartItems = [];
 
 window.addEventListener('load', () => {
     if (window.document.title === 'Menu') {
+        renderSelect();
         renderMenu();
+        document.getElementById('menu-select').addEventListener('change', e => {
+            let selectedOptions = Array.from(e.target.selectedOptions).map(e => {
+                return e.value;
+            });
+            selectedOptions.forEach(opt => {
+                console.log(opt);
+            })
+            renderMenu(selectedOptions);
+        });
     }
 })
 window.addEventListener('load', () => {
@@ -250,12 +261,29 @@ const MENU_ITEMS = [
     }
 ];
 
-function renderMenu() {
-    //get main table div
-    let tableSection = document.getElementById("tables");
-    let categories = MENU_ITEMS.filter((obj, index, self) =>
+function renderSelect(){
+    const menuSelect = document.getElementById("menu-select");
+    let categoryOptions = MENU_ITEMS.filter((obj, index, self) =>
         index === self.findIndex((t) => t.category === obj.category)
     );
+    categoryOptions.forEach((obj, index) => {
+        let option = document.createElement("option");
+        option.value = obj.category;
+        option.text = obj.category;
+        menuSelect.appendChild(option);
+    })
+}
+
+function renderMenu(categories) {
+    //get main table div
+    let tableSection = document.getElementById("tables");
+    tableSection.innerHTML = "";
+    //if no categories selected show all
+    if(!categories){
+        categories = MENU_ITEMS.filter((obj, index, self) =>
+            index === self.findIndex((t) => t.category === obj.category)
+        ).map(obj => obj.category);
+    }
     //create a table for each category
     categories.forEach(category => {
         let tableDiv = document.createElement("div");
@@ -268,14 +296,15 @@ function renderMenu() {
             <th scope="col">Item</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <th scope="col"></th>
         </tr>`
-        caption.textContent = category.category;
+        caption.textContent = category;
         table.appendChild(caption);
         table.appendChild(thead);
 
         //get menu items by category
         let categoryItems = MENU_ITEMS.filter((item) => {
-            if (item.category === category.category) {
+            if (item.category === category) {
                 return item;
             }
         })
@@ -290,8 +319,12 @@ function renderMenu() {
             <td>${new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
-            }).format(categoryItem.price)}</td>`;
+            }).format(categoryItem.price)}</td>
+            <td><button class="success">Add to cart</button></td>`;
             tbody.appendChild(row);
+            row.querySelector("button").addEventListener("click", () => {
+                addItemToCart(categoryItem);
+            });
         })
 
         //append tbody and to table and table to the tables div
@@ -302,7 +335,10 @@ function renderMenu() {
     })
 }
 
-
+function addItemToCart(e) {
+    cartItems.push(e);
+    console.log(cartItems);
+}
 function setUpResEvents() {
     let form = document.getElementById("reservationForm");
     form.addEventListener("submit", (e) => {
