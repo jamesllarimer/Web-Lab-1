@@ -13,9 +13,6 @@ window.addEventListener('load', () => {
             let selectedOptions = Array.from(e.target.selectedOptions).map(e => {
                 return e.value;
             });
-            selectedOptions.forEach(opt => {
-                console.log(opt);
-            })
             renderMenu(selectedOptions);
         });
     }
@@ -23,7 +20,6 @@ window.addEventListener('load', () => {
 window.addEventListener('load', () => {
     if (window.document.title === 'Reservations') {
         setUpResEvents();
-        console.log('Reservations loaded');
     }
 })
 
@@ -347,13 +343,15 @@ function setUpResEvents() {
 
         let inputs = document.querySelectorAll("input");
         let textArea = document.querySelector("textarea");
-        let inputList = [textArea.name]
+        let partyInput = document.getElementById("party-size");
+        let inputList = [textArea.name, Number(partyInput.value)];
+
         inputs.forEach(input => {
             inputList.push(input.name);
         })
 
         let uniqueFormFields = new Set(inputList);
-
+        uniqueFormFields.add("party-size");
 
         let formData = new FormData(e.target);
         let entries = {}
@@ -361,6 +359,7 @@ function setUpResEvents() {
         for (const entry of formData.entries()) {
             entries[entry[0]] = entry[1];
         }
+        entries["party-size"] = Number(partyInput.value);
 
         let errors = validateForm(uniqueFormFields, entries);
         if (errors.length > 0) {
@@ -398,7 +397,6 @@ function renderReservation(formData) {
 }
 
 function validateForm(formFields, entries) {
-    console.log("validate form")
 
     let errors = [];
     const currentDate = new Date().toJSON().slice(0, 10);
@@ -472,7 +470,6 @@ function validateForm(formFields, entries) {
                 }
                 break;
             case "dietary-notes":
-                console.log(value.length)
                 if (value.length > 30) {
                     let error = {
                         input: key,
@@ -482,7 +479,6 @@ function validateForm(formFields, entries) {
                 }
                 break;
             default:
-                console.log(key, value);
                 break;
 
         }
