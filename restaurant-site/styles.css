@@ -225,3 +225,7 @@ li h5 {
 #cart-total{
     color: var(--light);
 }
+
+.light-text{
+    color: var(--light);
+}
