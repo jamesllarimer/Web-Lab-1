@@ -25,13 +25,16 @@ window.addEventListener('load', () => {
         setUpResEvents();
     }
 })
-
 window.addEventListener('load', () => {
     if (window.document.title === 'Cart') {
         renderCart()
     }
 })
-
+window.addEventListener('load', () => {
+    if (window.document.title === 'Cart') {
+        setUpCartModalEvents()
+    }
+})
 const MENU_ITEMS = [
     // Breakfast
     {
@@ -359,17 +362,15 @@ function renderMenu(categories) {
 function addItemToCart(cartItem) {
     const cartList = document.getElementById("cart-list");
     const cartItemCount = document.getElementById("cart-item-count");
-    const cartButtonTotal = document.getElementById("cart-total");
     const cartItemPrice = document.getElementById("cart-item-total");
     let cartTotal = 0;
-
+    let cartCount = 0;
     cartItems.push(cartItem);
-    // cartItemCount.innerText = cartItems.length;
-    // cartButtonTotal.innerText = cartItems.length;
     cartList.innerHTML = "";
 
     cartItems.forEach(item => {
         cartTotal += parseInt(item.total);
+        cartCount += parseInt(item.count);
         let listItem = document.createElement("li");
         listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "lh-sm");
         listItem.innerHTML = `<h6 className="my-0">${item.menuItem.name}</h6>
@@ -377,6 +378,7 @@ function addItemToCart(cartItem) {
         cartList.appendChild(listItem);
     });
     cartItemPrice.innerText = cartTotal;
+    cartItemCount.innerText = cartCount;
 }
 
 function goToCheckout() {
@@ -385,12 +387,12 @@ function goToCheckout() {
 }
 
 function renderCart() {
-    //ToDo Add totals
-    //Make cart card
     const cartItems = JSON.parse(localStorage.getItem('cart'));
     const cartList = document.getElementById("cart-list");
     let cartTotal = 0;
     let cartItemCount = 0;
+    const taxRate = 0.08;
+    let taxTotal = 0;
     cartItems.forEach(item => {
         cartTotal += parseInt(item.total);
         cartItemCount += parseInt(item.count);
@@ -403,7 +405,18 @@ function renderCart() {
                                `;
         cartList.appendChild(listItem);
     })
-    console.log(`total: ${cartTotal} total: ${cartItemCount}`);
+    let listItem = document.createElement("li");
+    listItem.classList.add("list-group-item");
+    listItem.innerHTML = `<h5>Tax</h5>
+                            <p>Total before tax: $${cartTotal}</p>
+                            <p>Tax Rate: ${100 * taxRate}%</p>
+                            <p>Tax Total: $${cartTotal * taxRate}</p>
+                               `;
+    cartList.appendChild(listItem);
+
+    taxTotal = cartTotal * taxRate;
+    cartTotal += taxTotal;
+
     const totalSection = document.getElementById('cart-total')
     totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
                               <h5>Cart Total: $${cartTotal}</h5>`;
@@ -583,5 +596,23 @@ function clearAlerts() {
         alertInstance.close();
     })
 }
+
+function setUpCartModalEvents() {
+    const checkoutModal = document.getElementById("checkout-modal");
+    const confirmClearModal = document.getElementById("confirm-clear-modal");
+    checkoutModal.addEventListener("hidden.bs.modal", (e) => {
+        clearCartAndGoToMenu()
+    })
+    confirmClearModal.addEventListener("hidden.bs.modal", (e) => {
+        clearCartAndGoToMenu()
+    })
+}
+
+function clearCartAndGoToMenu() {
+   window.localStorage.removeItem('cart')
+    window.location.href = 'menu.html'
+}
+
+
 
 

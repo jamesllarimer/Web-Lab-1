@@ -43,8 +43,61 @@
                 <div id="cart-total" class="col-4">
                 </div>
                 <div class="col-8">
-                        <button id="checkout-btn" class="btn btn-dark">Checkout</button>
-                        <button id="clear-btn" class="btn btn-light">Clear Cart</button>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#checkout-modal">
+                        Checkout
+                    </button>
+                    <button  type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#clear-modal">
+                        Clear Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="checkout-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order successfully submitted</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Thanks for placing an order!</p>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="clear-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cancel Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel your order?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" data-bs-target="#confirm-clear-modal" data-bs-toggle="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confirm-clear-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank you!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Come back when you're hungry y'all!</p>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
