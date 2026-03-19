@@ -195,8 +195,33 @@ fieldset {
     color: var(--primary);
     background-color: var(--light);
 }
+.btn-primary{
+    background-color: var(--primary);
+    color: var(--light);
+}
 
 .btn-dark {
     color: var(--secondary);
     background-color: var(--light);
+}
+.bg-primary-override{
+    background-color: var(--primary);
+    color: var(--light);
+}
+.bordered{
+    border-bottom: 1px solid var(--primary);
+}
+
+li h5 {
+    color: var(--primary);
+}
+
+#cart-card{
+    background-color: var(--primary);
+}
+#card-header-text {
+    color: var(--light);
+}
+#cart-total{
+    color: var(--light);
 }

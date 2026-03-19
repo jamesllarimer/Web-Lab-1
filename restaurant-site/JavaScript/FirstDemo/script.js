@@ -15,11 +15,20 @@ window.addEventListener('load', () => {
             });
             renderMenu(selectedOptions);
         });
+        document.getElementById('checkout-button').addEventListener('click', e => {
+            goToCheckout()
+        })
     }
 })
 window.addEventListener('load', () => {
     if (window.document.title === 'Reservations') {
         setUpResEvents();
+    }
+})
+
+window.addEventListener('load', () => {
+    if (window.document.title === 'Cart') {
+        renderCart()
     }
 })
 
@@ -257,7 +266,7 @@ const MENU_ITEMS = [
     }
 ];
 
-function renderSelect(){
+function renderSelect() {
     const menuSelect = document.getElementById("menu-select");
     let categoryOptions = MENU_ITEMS.filter((obj, index, self) =>
         index === self.findIndex((t) => t.category === obj.category)
@@ -275,28 +284,21 @@ function renderMenu(categories) {
     let tableSection = document.getElementById("tables");
     tableSection.innerHTML = "";
     //if no categories selected show all
-    if(!categories){
+    if (!categories) {
         categories = MENU_ITEMS.filter((obj, index, self) =>
             index === self.findIndex((t) => t.category === obj.category)
         ).map(obj => obj.category);
     }
     //create a table for each category
     categories.forEach(category => {
-        let tableDiv = document.createElement("div");
-        let table = document.createElement("table");
-        let caption = document.createElement("caption");
-        let thead = document.createElement("thead");
-        let tbody = document.createElement("tbody");
-        thead.innerHTML = ` 
-        <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col"></th>
-        </tr>`
-        caption.textContent = category;
-        table.appendChild(caption);
-        table.appendChild(thead);
+        let cardDiv = document.createElement("div");
+        let cardHeader = document.createElement("h5");
+        let cardList = document.createElement("ul");
+        cardList.className = "mx-2";
+        cardDiv.className = "card my-3";
+        cardHeader.className = "card-header bg-primary-override";
+        cardHeader.textContent = category;
+        cardDiv.appendChild(cardHeader);
 
         //get menu items by category
         let categoryItems = MENU_ITEMS.filter((item) => {
@@ -308,33 +310,105 @@ function renderMenu(categories) {
         //build a row for each item
         categoryItems.forEach(categoryItem => {
 
-            let row = document.createElement("tr")
-            row.innerHTML = `
-            <th class="table-header" scope="row">${categoryItem.name}</th>
-            <td>${categoryItem.description}</td>
-            <td>${new Intl.NumberFormat("en-US", {
+            let li = document.createElement("li")
+            let leftDiv = document.createElement("div");
+            let rightDiv = document.createElement("div");
+            let h6 = document.createElement("h5");
+            let p = document.createElement("p");
+            let span = document.createElement("span");
+
+            leftDiv.className = "col-lg-9";
+            rightDiv.className = "col-lg-3";
+            li.className = "row bordered p-3"
+            h6.innerText = categoryItem.name;
+            p.innerText = categoryItem.description;
+            span.innerText = `Price: ${new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
-            }).format(categoryItem.price)}</td>
-            <td><button class="success">Add to cart</button></td>`;
-            tbody.appendChild(row);
-            row.querySelector("button").addEventListener("click", () => {
-                addItemToCart(categoryItem);
+            }).format(categoryItem.price)}`;
+            leftDiv.appendChild(h6)
+            leftDiv.appendChild(p);
+            leftDiv.appendChild(span);
+            li.appendChild(leftDiv);
+
+            rightDiv.innerHTML = `
+                                    <select class="form-select"  aria-label="item select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                              
+                                   <button class="btn btn-primary" type="button">Add to Cart</button>`;
+
+            li.appendChild(rightDiv);
+            cardList.appendChild(li);
+            li.querySelector("button").addEventListener("click", (e) => {
+                let count = e.target.previousElementSibling.value
+                let total = count * parseInt(categoryItem.price);
+                let cartItem = {menuItem: categoryItem, count: count, total: total};
+                addItemToCart(cartItem);
             });
         })
-
-        //append tbody and to table and table to the tables div
-        table.appendChild(tbody);
-        tableSection.appendChild(table);
-        table.classList.add("table", "table-bordered", "table-striped", "caption-top", "mt-4");
-        tableDiv.classList.add("table-responsive");
+        cardDiv.appendChild(cardList);
+        tableSection.appendChild(cardDiv);
     })
 }
 
-function addItemToCart(e) {
-    cartItems.push(e);
-    console.log(cartItems);
+function addItemToCart(cartItem) {
+    const cartList = document.getElementById("cart-list");
+    const cartItemCount = document.getElementById("cart-item-count");
+    const cartButtonTotal = document.getElementById("cart-total");
+    const cartItemPrice = document.getElementById("cart-item-total");
+    let cartTotal = 0;
+
+    cartItems.push(cartItem);
+    // cartItemCount.innerText = cartItems.length;
+    // cartButtonTotal.innerText = cartItems.length;
+    cartList.innerHTML = "";
+
+    cartItems.forEach(item => {
+        cartTotal += parseInt(item.total);
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "lh-sm");
+        listItem.innerHTML = `<h6 className="my-0">${item.menuItem.name}</h6>
+                               <span className="text-body-secondary">$${item.total}</span>`
+        cartList.appendChild(listItem);
+    });
+    cartItemPrice.innerText = cartTotal;
 }
+
+function goToCheckout() {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    window.location.href = 'cart.html';
+}
+
+function renderCart() {
+    //ToDo Add totals
+    //Make cart card
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    const cartList = document.getElementById("cart-list");
+    let cartTotal = 0;
+    let cartItemCount = 0;
+    cartItems.forEach(item => {
+        cartTotal += parseInt(item.total);
+        cartItemCount += parseInt(item.count);
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
+        listItem.innerHTML = `<h5>${item.menuItem.name}</h5>
+                            <p class="text-body-secondary">${item.menuItem.description}</p>
+                            <p>Count: ${item.count}</p>
+                            <p>Subtotal: $${item.total}</p>
+                               `;
+        cartList.appendChild(listItem);
+    })
+    console.log(`total: ${cartTotal} total: ${cartItemCount}`);
+    const totalSection = document.getElementById('cart-total')
+    totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
+                              <h5>Cart Total: $${cartTotal}</h5>`;
+}
+
 function setUpResEvents() {
     let form = document.getElementById("reservationForm");
     form.addEventListener("submit", (e) => {

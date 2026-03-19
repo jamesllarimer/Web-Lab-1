@@ -30,25 +30,17 @@
         </div>
     </div>
 </nav>
-<div class="card" style="width: 18rem;">
-    <div class="card-header">
-        Cart
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">An item</li>
-    </ul>
-    <div class="card-footer">
-        Total: <span id="cart-total"></span>
-    </div>
-</div>
+
 <div class="container-fluid container-lg mt-5">
     <div class="row flex-lg-row-reverse align-items-center g-5">
         <div class="col-10 col-sm-12 col-lg-7">
-            <img  class="d-block mx-lg-auto img-fluid" src="./images/MenuPageImage.jpg" alt="Food on a table" loading="lazy">
+            <img class="d-block mx-lg-auto img-fluid" src="./images/MenuPageImage.jpg" alt="Food on a table"
+                 loading="lazy">
         </div>
         <div class="col-lg-5">
             <h1 class="display-5 fw-bold lh-1 mb-3">Our Menu</h1>
-            <p class="lead">Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked in cast iron
+            <p class="lead">Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked
+                in cast iron
                 (no sugar), and every recipe carries a bit of mountain history.
                 Our menu is rooted in old-time traditions: slow-cooked vittles, hearty fixins, creekside soups, and
                 wild-foraged flavors prepared the right way. We honor the resourcefulness of mountain cooking —
@@ -57,11 +49,33 @@
                 Pull up a chair — supper’s ready.</p>
         </div>
     </div>
-    <select id="menu-select" class="form-select form-select-lg mb-3" multiple aria-label=" multiple select .form-select-lg">
-        <option disabled>Select one or more categories</option>
-    </select>
-    <div class="row" id="tables">
+    <div class="row g-5 mt-5">
+        <div class="col-lg-10">
+            <select id="menu-select" class="form-select form-select-lg" multiple
+                    aria-label=" multiple select .form-select-sm">
+                <option disabled>Select one or more categories</option>
+            </select>
+            <div class="row" id="tables">
 
+            </div>
+        </div>
+        <div class="col-lg-2 order-md-last p-3">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">Your cart</h4>
+            <p>Total: $<span id="cart-item-total">0</span> Item Count: <span id="cart-item-count">0</span></p>
+            <ul id="cart-list" class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                    <div><h6 class="my-0">Your card is empty</h6> <small class="text-body-secondary">Add items to your
+                        cart</small>
+                    </div>
+                    <span class="text-body-secondary">$0</span></li>
+            </ul>
+            <div class="card p-2">
+                <div class="input-group">
+                    <button id="checkout-button" class="btn btn-primary">Checkout</button>
+                    <button id="clear-cart" class="btn btn-secondary">Clear cart</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="./JavaScript/FirstDemo/script.js"></script>
