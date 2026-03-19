@@ -393,33 +393,41 @@ function renderCart() {
     let cartItemCount = 0;
     const taxRate = 0.08;
     let taxTotal = 0;
-    cartItems.forEach(item => {
-        cartTotal += parseInt(item.total);
-        cartItemCount += parseInt(item.count);
-        let listItem = document.createElement("li");
-        listItem.classList.add("list-group-item");
-        listItem.innerHTML = `<h5>${item.menuItem.name}</h5>
+    if(cartItems && cartItems.length > 0) {
+        cartItems.forEach(item => {
+            cartTotal += parseInt(item.total);
+            cartItemCount += parseInt(item.count);
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.innerHTML = `<h5>${item.menuItem.name}</h5>
                             <p class="text-body-secondary">${item.menuItem.description}</p>
                             <p>Count: ${item.count}</p>
                             <p>Subtotal: $${item.total}</p>
                                `;
-        cartList.appendChild(listItem);
-    })
-    let listItem = document.createElement("li");
-    listItem.classList.add("list-group-item");
-    listItem.innerHTML = `<h5>Tax</h5>
+            cartList.appendChild(listItem);
+        })
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
+        listItem.innerHTML = `<h5>Tax</h5>
                             <p>Total before tax: $${cartTotal}</p>
                             <p>Tax Rate: ${100 * taxRate}%</p>
                             <p>Tax Total: $${cartTotal * taxRate}</p>
                                `;
-    cartList.appendChild(listItem);
+        cartList.appendChild(listItem);
 
-    taxTotal = cartTotal * taxRate;
-    cartTotal += taxTotal;
+        taxTotal = cartTotal * taxRate;
+        cartTotal += taxTotal;
 
-    const totalSection = document.getElementById('cart-total')
-    totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
+        const totalSection = document.getElementById('cart-total')
+        totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
                               <h5>Cart Total: $${cartTotal}</h5>`;
+    }else{
+        cartList.innerHTML = `<h3 class='light-text m-2'>Your cart is empty!</h3>`;
+        const footerButtons = document.getElementById('cart-footer-btns').children;
+        for (let i = 0; i < footerButtons.length; i++) {
+            footerButtons[i].disabled = true;
+        }
+    }
 }
 
 function setUpResEvents() {
@@ -575,7 +583,7 @@ function validateForm(formFields, entries) {
 
 }
 
-const appendAlert = (message, type) => {
+function appendAlert  (message, type) {
     const alertSection = document.getElementById("alert-section");
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
