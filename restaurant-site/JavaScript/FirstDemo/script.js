@@ -3,19 +3,41 @@ const formatter = new Intl.DateTimeFormat('en-US', {
     minute: '2-digit',
     hour12: false
 });
+let cartItems = [];
 
 window.addEventListener('load', () => {
     if (window.document.title === 'Menu') {
+        renderSelect();
         renderMenu();
+        document.getElementById('menu-select').addEventListener('change', e => {
+            let selectedOptions = Array.from(e.target.selectedOptions).map(e => {
+                return e.value;
+            });
+            renderMenu(selectedOptions);
+        });
+        document.getElementById('checkout-button').addEventListener('click', e => {
+            goToCheckout()
+        })
+        document.getElementById('clear-cart').addEventListener('click', e => {
+            clearCart()
+        })
     }
 })
 window.addEventListener('load', () => {
     if (window.document.title === 'Reservations') {
         setUpResEvents();
-        console.log('Reservations loaded');
     }
 })
-
+window.addEventListener('load', () => {
+    if (window.document.title === 'Cart') {
+        renderCart()
+    }
+})
+window.addEventListener('load', () => {
+    if (window.document.title === 'Cart') {
+        setUpCartModalEvents()
+    }
+})
 const MENU_ITEMS = [
     // Breakfast
     {
@@ -250,32 +272,43 @@ const MENU_ITEMS = [
     }
 ];
 
-function renderMenu() {
-    //get main table div
-    let tableSection = document.getElementById("tables");
-    let categories = MENU_ITEMS.filter((obj, index, self) =>
+function renderSelect() {
+    const menuSelect = document.getElementById("menu-select");
+    let categoryOptions = MENU_ITEMS.filter((obj, index, self) =>
         index === self.findIndex((t) => t.category === obj.category)
     );
+    categoryOptions.forEach((obj, index) => {
+        let option = document.createElement("option");
+        option.value = obj.category;
+        option.text = obj.category;
+        menuSelect.appendChild(option);
+    })
+}
+
+function renderMenu(categories) {
+    //get main table div
+    let tableSection = document.getElementById("tables");
+    tableSection.innerHTML = "";
+    //if no categories selected show all
+    if (!categories || categories.includes("All")) {
+        categories = MENU_ITEMS.filter((obj, index, self) =>
+            index === self.findIndex((t) => t.category === obj.category)
+        ).map(obj => obj.category);
+    }
     //create a table for each category
     categories.forEach(category => {
-        let tableDiv = document.createElement("div");
-        let table = document.createElement("table");
-        let caption = document.createElement("caption");
-        let thead = document.createElement("thead");
-        let tbody = document.createElement("tbody");
-        thead.innerHTML = ` 
-        <tr>
-            <th scope="col">Item</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-        </tr>`
-        caption.textContent = category.category;
-        table.appendChild(caption);
-        table.appendChild(thead);
+        let cardDiv = document.createElement("div");
+        let cardHeader = document.createElement("h5");
+        let cardList = document.createElement("ul");
+        cardList.className = "mx-2";
+        cardDiv.className = "card my-3";
+        cardHeader.className = "card-header bg-primary-override";
+        cardHeader.textContent = category;
+        cardDiv.appendChild(cardHeader);
 
         //get menu items by category
         let categoryItems = MENU_ITEMS.filter((item) => {
-            if (item.category === category.category) {
+            if (item.category === category) {
                 return item;
             }
         })
@@ -283,25 +316,148 @@ function renderMenu() {
         //build a row for each item
         categoryItems.forEach(categoryItem => {
 
-            let row = document.createElement("tr")
-            row.innerHTML = `
-            <th class="table-header" scope="row">${categoryItem.name}</th>
-            <td>${categoryItem.description}</td>
-            <td>${new Intl.NumberFormat("en-US", {
+            let li = document.createElement("li")
+            let leftDiv = document.createElement("div");
+            let rightDiv = document.createElement("div");
+            let h6 = document.createElement("h5");
+            let p = document.createElement("p");
+            let span = document.createElement("span");
+
+            leftDiv.className = "col-lg-9";
+            rightDiv.className = "col-lg-3";
+            li.className = "row bordered p-3"
+            h6.innerText = categoryItem.name;
+            p.innerText = categoryItem.description;
+            span.innerText = `Price: ${new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
-            }).format(categoryItem.price)}</td>`;
-            tbody.appendChild(row);
-        })
+            }).format(categoryItem.price)}`;
+            leftDiv.appendChild(h6)
+            leftDiv.appendChild(p);
+            leftDiv.appendChild(span);
+            li.appendChild(leftDiv);
 
-        //append tbody and to table and table to the tables div
-        table.appendChild(tbody);
-        tableSection.appendChild(table);
-        table.classList.add("table", "table-bordered", "table-striped", "caption-top", "mt-4");
-        tableDiv.classList.add("table-responsive");
+            rightDiv.innerHTML = `
+                                    <select class="form-select"  aria-label="item select">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                              
+                                   <button class="btn btn-primary" type="button">Add to Cart</button>`;
+
+            li.appendChild(rightDiv);
+            cardList.appendChild(li);
+            li.querySelector("button").addEventListener("click", (e) => {
+                let count = e.target.previousElementSibling.value
+                let total = count * parseInt(categoryItem.price);
+                let cartItem = {menuItem: categoryItem, count: count, total: total};
+                addItemToCart(cartItem);
+            });
+        })
+        cardDiv.appendChild(cardList);
+        tableSection.appendChild(cardDiv);
     })
 }
 
+function addItemToCart(cartItem) {
+    const cartList = document.getElementById("cart-list");
+    const cartItemCount = document.getElementById("cart-item-count");
+    const cartItemPrice = document.getElementById("cart-item-total");
+    let cartTotal = 0;
+    let cartCount = 0;
+    cartItems.push(cartItem);
+    cartList.innerHTML = "";
+
+    cartItems.forEach(item => {
+        cartTotal += parseInt(item.total);
+        cartCount += parseInt(item.count);
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item", "d-flex", "justify-content-between", "lh-sm");
+        listItem.innerHTML = `<h6 className="my-0">${item.menuItem.name}</h6>
+                               <span className="text-body-secondary">$${item.total}</span>`
+        cartList.appendChild(listItem);
+    });
+    cartItemPrice.innerText = cartTotal;
+    cartItemCount.innerText = cartCount;
+    toggleCartVisibility()
+}
+
+function clearCart(){
+    const cartList = document.getElementById("cart-list");
+    cartList.innerHTML = "";
+    cartItems = []
+    toggleCartVisibility()
+}
+function goToCheckout() {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    window.location.href = 'cart.html';
+}
+
+function renderCart() {
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    const cartList = document.getElementById("cart-list");
+    let cartTotal = 0;
+    let cartItemCount = 0;
+    const taxRate = 0.08;
+    let taxTotal = 0;
+    if (cartItems && cartItems.length > 0) {
+        cartItems.forEach(item => {
+            cartTotal += parseInt(item.total);
+            cartItemCount += parseInt(item.count);
+            let listItem = document.createElement("li");
+            listItem.classList.add("list-group-item");
+            listItem.innerHTML = `<h5>${item.menuItem.name}</h5>
+                            <p class="text-body-secondary">${item.menuItem.description}</p>
+                            <p>Count: ${item.count}</p>
+                            <p>Price Per Item: ${new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            }).format(item.menuItem.price)}
+                            </p>
+                            <p>Item Total: ${new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            }).format(item.total)}
+                            </p>`;
+            cartList.appendChild(listItem);
+        })
+        let listItem = document.createElement("li");
+        listItem.classList.add("list-group-item");
+        listItem.innerHTML = `<h5>Tax</h5>
+                            <p>Subtotal: ${new Intl.NumberFormat("en-US", {
+                                                    style: "currency",
+                                                    currency: "USD",
+                                                    }).format(cartTotal)}
+                            </p>
+                            <p>Tax Rate: ${100 * taxRate}%</p>
+                            <p>Tax Total: ${new Intl.NumberFormat("en-US", {
+                                             style: "currency",
+                                             currency: "USD",
+                                             }).format(cartTotal * taxRate)}
+                            </p>`;
+        cartList.appendChild(listItem);
+
+        taxTotal = cartTotal * taxRate;
+        cartTotal += taxTotal;
+
+        const totalSection = document.getElementById('cart-total')
+        totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
+                                  <h5>Cart Total: ${new Intl.NumberFormat("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                    }).format(cartTotal)}
+                                  </h5>`;
+    } else {
+        cartList.innerHTML = `<h3 class='light-text m-2'>Your cart is empty!</h3>`;
+        const footerButtons = document.getElementById('cart-footer-btns').children;
+        for (let i = 0; i < footerButtons.length; i++) {
+            footerButtons[i].disabled = true;
+        }
+    }
+}
 
 function setUpResEvents() {
     let form = document.getElementById("reservationForm");
@@ -311,13 +467,15 @@ function setUpResEvents() {
 
         let inputs = document.querySelectorAll("input");
         let textArea = document.querySelector("textarea");
-        let inputList = [textArea.name]
+        let partyInput = document.getElementById("party-size");
+        let inputList = [textArea.name, Number(partyInput.value)];
+
         inputs.forEach(input => {
             inputList.push(input.name);
         })
 
         let uniqueFormFields = new Set(inputList);
-
+        uniqueFormFields.add("party-size");
 
         let formData = new FormData(e.target);
         let entries = {}
@@ -325,6 +483,7 @@ function setUpResEvents() {
         for (const entry of formData.entries()) {
             entries[entry[0]] = entry[1];
         }
+        entries["party-size"] = Number(partyInput.value);
 
         let errors = validateForm(uniqueFormFields, entries);
         if (errors.length > 0) {
@@ -345,7 +504,8 @@ function setUpResEvents() {
     })
 
     form.addEventListener("reset", (e) => {
-
+        clearAlerts();
+        clearFormResults();
     })
 }
 
@@ -362,7 +522,6 @@ function renderReservation(formData) {
 }
 
 function validateForm(formFields, entries) {
-    console.log("validate form")
 
     let errors = [];
     const currentDate = new Date().toJSON().slice(0, 10);
@@ -436,7 +595,6 @@ function validateForm(formFields, entries) {
                 }
                 break;
             case "dietary-notes":
-                console.log(value.length)
                 if (value.length > 30) {
                     let error = {
                         input: key,
@@ -446,7 +604,6 @@ function validateForm(formFields, entries) {
                 }
                 break;
             default:
-                console.log(key, value);
                 break;
 
         }
@@ -456,7 +613,7 @@ function validateForm(formFields, entries) {
 
 }
 
-const appendAlert = (message, type) => {
+function appendAlert(message, type) {
     const alertSection = document.getElementById("alert-section");
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
@@ -477,5 +634,35 @@ function clearAlerts() {
         alertInstance.close();
     })
 }
+function clearFormResults() {
+    const formResult = document.getElementById('form_result')
+    formResult.innerHTML = '';
+}
+
+function setUpCartModalEvents() {
+    const checkoutModal = document.getElementById("checkout-modal");
+    const confirmClearModal = document.getElementById("confirm-clear-modal");
+    checkoutModal.addEventListener("hidden.bs.modal", (e) => {
+        clearCartAndGoToMenu()
+    })
+    confirmClearModal.addEventListener("hidden.bs.modal", (e) => {
+        clearCartAndGoToMenu()
+    })
+}
+
+function clearCartAndGoToMenu() {
+    window.localStorage.removeItem('cart')
+    window.location.href = 'menu.html'
+}
+
+function toggleCartVisibility() {
+    const cartDiv = document.getElementById("cart");
+    if(cartItems.length > 0){
+        cartDiv.hidden = false;
+    }else{
+        cartDiv.hidden = true;
+    }
+}
+
 
 

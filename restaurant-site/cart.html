@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <script src="https://kit.fontawesome.com/db4cecc8dc.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https:fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid">
+        <a href="index.html" class="nav-link"> <img src="images/Logo.png" alt="Lefty's Appalachian Kitchen Logo"
+                                                    class="nav-logo"></a>
+        <a class="navbar-brand" href="#">Lefty's Appalachian Kitchen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <a href="index.html" class="nav-link">Home <i class="fa-regular fa-house"></i></a>
+            <a href="menu.html" class="nav-link">Menu <i class="fa-solid fa-book-open"></i></a>
+            <a href="reservations.html" class="nav-link">Reservations <i class="fa-regular fa-calendar"></i></a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div id="cart-card" class="card my-3">
+        <div class="card-header">
+           <h1 id="card-header-text" >Cart</h1>
+        </div>
+        <ul id="cart-list" class="list-group list-group-flush">
+
+        </ul>
+        <div class="card-footer">
+            <div class="row">
+                <div id="cart-total" class="col-4">
+                </div>
+                <div id="cart-footer-btns" class="col-8">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#checkout-modal">
+                        Checkout
+                    </button>
+                    <button  type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#clear-modal">
+                        Clear Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="checkout-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Order successfully submitted</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Thanks for placing an order!</p>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="clear-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cancel Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel your order?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" data-bs-target="#confirm-clear-modal" data-bs-toggle="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="confirm-clear-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank you!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Come back when you're hungry y'all!</p>
+                </div>
+                <div class="modal-footer">
+                    <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./JavaScript/FirstDemo/script.js"></script>
+</body>
+</html>

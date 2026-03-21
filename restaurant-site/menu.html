@@ -30,14 +30,17 @@
         </div>
     </div>
 </nav>
+
 <div class="container-fluid container-lg mt-5">
     <div class="row flex-lg-row-reverse align-items-center g-5">
         <div class="col-10 col-sm-12 col-lg-7">
-            <img  class="d-block mx-lg-auto img-fluid" src="./images/MenuPageImage.jpg" alt="Food on a table" loading="lazy">
+            <img class="d-block mx-lg-auto img-fluid" src="./images/MenuPageImage.jpg" alt="Food on a table"
+                 loading="lazy">
         </div>
         <div class="col-lg-5">
             <h1 class="display-5 fw-bold lh-1 mb-3">Our Menu</h1>
-            <p class="lead">Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked in cast iron
+            <p class="lead">Welcome to a true Appalachian table — where the beans simmer all day, the cornbread’s baked
+                in cast iron
                 (no sugar), and every recipe carries a bit of mountain history.
                 Our menu is rooted in old-time traditions: slow-cooked vittles, hearty fixins, creekside soups, and
                 wild-foraged flavors prepared the right way. We honor the resourcefulness of mountain cooking —
@@ -46,8 +49,28 @@
                 Pull up a chair — supper’s ready.</p>
         </div>
     </div>
-    <div class="row" id="tables">
+    <div class="row g-5 mt-5">
+            <select id="menu-select" class="form-select form-select-lg"
+                    aria-label="select .form-select-sm">
+                <option value="All">All</option>
+            </select>
+            <div class="row" id="tables">
 
+            </div>
+    </div>
+    <div hidden="true" id="cart" class="row sticky-bottom p-3 m-5">
+        <div class="row">
+            <h4 class="col-md-8 light-text">Your cart</h4>
+            <p class=" col-md-2 light-text"><b>Total: $</b><span id="cart-item-total">0</span><b> Item Count:</b>  <span id="cart-item-count">0</span></p>
+        </div>
+        <ul id="cart-list" class="list-group mb-3">
+        </ul>
+        <div class="card p-2">
+            <div class="input-group">
+                <button id="checkout-button" class="btn btn-primary">Checkout</button>
+                <button id="clear-cart" class="btn btn-secondary">Clear cart</button>
+            </div>
+        </div>
     </div>
 </div>
 <script src="./JavaScript/FirstDemo/script.js"></script>
