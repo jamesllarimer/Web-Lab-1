@@ -18,6 +18,9 @@ window.addEventListener('load', () => {
         document.getElementById('checkout-button').addEventListener('click', e => {
             goToCheckout()
         })
+        document.getElementById('clear-cart').addEventListener('click', e => {
+            clearCart()
+        })
     }
 })
 window.addEventListener('load', () => {
@@ -287,7 +290,7 @@ function renderMenu(categories) {
     let tableSection = document.getElementById("tables");
     tableSection.innerHTML = "";
     //if no categories selected show all
-    if (!categories) {
+    if (!categories || categories.includes("All")) {
         categories = MENU_ITEMS.filter((obj, index, self) =>
             index === self.findIndex((t) => t.category === obj.category)
         ).map(obj => obj.category);
@@ -379,8 +382,15 @@ function addItemToCart(cartItem) {
     });
     cartItemPrice.innerText = cartTotal;
     cartItemCount.innerText = cartCount;
+    toggleCartVisibility()
 }
 
+function clearCart(){
+    const cartList = document.getElementById("cart-list");
+    cartList.innerHTML = "";
+    cartItems = []
+    toggleCartVisibility()
+}
 function goToCheckout() {
     localStorage.setItem('cart', JSON.stringify(cartItems));
     window.location.href = 'cart.html';
@@ -393,7 +403,7 @@ function renderCart() {
     let cartItemCount = 0;
     const taxRate = 0.08;
     let taxTotal = 0;
-    if(cartItems && cartItems.length > 0) {
+    if (cartItems && cartItems.length > 0) {
         cartItems.forEach(item => {
             cartTotal += parseInt(item.total);
             cartItemCount += parseInt(item.count);
@@ -402,17 +412,32 @@ function renderCart() {
             listItem.innerHTML = `<h5>${item.menuItem.name}</h5>
                             <p class="text-body-secondary">${item.menuItem.description}</p>
                             <p>Count: ${item.count}</p>
-                            <p>Subtotal: $${item.total}</p>
-                               `;
+                            <p>Price Per Item: ${new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            }).format(item.menuItem.price)}
+                            </p>
+                            <p>Item Total: ${new Intl.NumberFormat("en-US", {
+                                            style: "currency",
+                                            currency: "USD",
+                                            }).format(item.total)}
+                            </p>`;
             cartList.appendChild(listItem);
         })
         let listItem = document.createElement("li");
         listItem.classList.add("list-group-item");
         listItem.innerHTML = `<h5>Tax</h5>
-                            <p>Total before tax: $${cartTotal}</p>
+                            <p>Subtotal: ${new Intl.NumberFormat("en-US", {
+                                                    style: "currency",
+                                                    currency: "USD",
+                                                    }).format(cartTotal)}
+                            </p>
                             <p>Tax Rate: ${100 * taxRate}%</p>
-                            <p>Tax Total: $${cartTotal * taxRate}</p>
-                               `;
+                            <p>Tax Total: ${new Intl.NumberFormat("en-US", {
+                                             style: "currency",
+                                             currency: "USD",
+                                             }).format(cartTotal * taxRate)}
+                            </p>`;
         cartList.appendChild(listItem);
 
         taxTotal = cartTotal * taxRate;
@@ -420,8 +445,12 @@ function renderCart() {
 
         const totalSection = document.getElementById('cart-total')
         totalSection.innerHTML = `<h5>Total items: ${cartItemCount}</h5>
-                              <h5>Cart Total: $${cartTotal}</h5>`;
-    }else{
+                                  <h5>Cart Total: ${new Intl.NumberFormat("en-US", {
+                                    style: "currency",
+                                    currency: "USD",
+                                    }).format(cartTotal)}
+                                  </h5>`;
+    } else {
         cartList.innerHTML = `<h3 class='light-text m-2'>Your cart is empty!</h3>`;
         const footerButtons = document.getElementById('cart-footer-btns').children;
         for (let i = 0; i < footerButtons.length; i++) {
@@ -475,7 +504,8 @@ function setUpResEvents() {
     })
 
     form.addEventListener("reset", (e) => {
-
+        clearAlerts();
+        clearFormResults();
     })
 }
 
@@ -583,7 +613,7 @@ function validateForm(formFields, entries) {
 
 }
 
-function appendAlert  (message, type) {
+function appendAlert(message, type) {
     const alertSection = document.getElementById("alert-section");
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
@@ -604,6 +634,10 @@ function clearAlerts() {
         alertInstance.close();
     })
 }
+function clearFormResults() {
+    const formResult = document.getElementById('form_result')
+    formResult.innerHTML = '';
+}
 
 function setUpCartModalEvents() {
     const checkoutModal = document.getElementById("checkout-modal");
@@ -617,10 +651,18 @@ function setUpCartModalEvents() {
 }
 
 function clearCartAndGoToMenu() {
-   window.localStorage.removeItem('cart')
+    window.localStorage.removeItem('cart')
     window.location.href = 'menu.html'
 }
 
+function toggleCartVisibility() {
+    const cartDiv = document.getElementById("cart");
+    if(cartItems.length > 0){
+        cartDiv.hidden = false;
+    }else{
+        cartDiv.hidden = true;
+    }
+}
 
 
 

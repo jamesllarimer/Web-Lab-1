@@ -229,3 +229,8 @@ li h5 {
 .light-text{
     color: var(--light);
 }
+#cart{
+    background-color: var(--primary);
+    box-shadow: #444444 3px 3px 3px;
+    border-radius: 10px;
+}
